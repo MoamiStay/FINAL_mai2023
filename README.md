@@ -3,7 +3,6 @@
 Holidaze - accomodation booking site
 
 <!-- - npx create-react-app holidaze -->
-
 - (npm install sass)
 - npm install styled-components
 - npm i @reduxjs/toolkit react-redux
