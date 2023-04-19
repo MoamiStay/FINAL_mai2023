@@ -3,10 +3,11 @@
 Holidaze - accomodation booking site
 
 <!-- - npx create-react-app holidaze -->
+
 - (npm install sass)
 - npm install styled-components
-- npm i @reduxjs/toolkit react-redux
-<!-- - npm i react-router-dom -->
+  <!-- - npm i @reduxjs/toolkit react-redux -->
+  <!-- - npm i react-router-dom -->
 - (npm i react-hook-form)
 - (npm i @hookform/resolvers yup)
 
