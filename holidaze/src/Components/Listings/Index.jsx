@@ -1,13 +1,11 @@
-import GetListings from "./GetListings";
-import Searchbar from "./Searchbar";
+import Listings from "./Listings";
 
-const Listings = () => {
+const AllListings = () => {
     return (
         <>
-        <Searchbar />
-        <GetListings />
+        <Listings />
         </>
     )
 };
 
-export default Listings;
+export default AllListings;

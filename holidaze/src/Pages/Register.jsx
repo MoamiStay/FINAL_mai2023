@@ -1,7 +1,9 @@
+import RegisterIndex from "../Components/Auth/Registration/Index";
+
 const Register = () => {
   return (
     <div>
-      <p>Register</p>
+      <RegisterIndex />
     </div>
   );
 };

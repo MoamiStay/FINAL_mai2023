@@ -1,4 +1,4 @@
-import Listings from "../Components/Listings/Index";
+import AllListings from "../Components/Listings/Index";
 
 const Home = () => {
   return (
@@ -6,7 +6,7 @@ const Home = () => {
       <div>
         <p>Home</p>
       </div>
-      <Listings />
+      <AllListings />
     </>
   );
 };

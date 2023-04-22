@@ -1,7 +1,9 @@
+import LoginIndex from "../Components/Auth/Login/Index";
+
 const Login = () => {
   return (
     <div>
-      <p>Login</p>
+      <LoginIndex />
     </div>
   );
 };
