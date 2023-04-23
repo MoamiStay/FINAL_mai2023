@@ -33,8 +33,6 @@ const Listings = () => {
         })
     }
 
-    console.log(state.list);
-
     return (
         <>
         <form>

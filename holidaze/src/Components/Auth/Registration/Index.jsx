@@ -1,4 +1,4 @@
-import RegisterUser from "./Register";
+import RegisterUser from "./RegisterUser";
 
 const RegisterIndex = () => {
     return (

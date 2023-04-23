@@ -1,5 +1,5 @@
 import { URL } from "../../../Utils/constants";
-import { login } from "../../../Utils/constants";
+import { loginURL } from "../../../Utils/constants";
 import usePostApi from "../../../Hooks/usePostApi";
 
 const userToLogin = {
@@ -8,7 +8,7 @@ const userToLogin = {
 };
 
 const Login = () => {
-        const { data, isLoading, isError } = usePostApi(URL + login, userToLogin);
+        const { data, isLoading, isError } = usePostApi(URL + loginURL, userToLogin);
         console.log(data);
         // Create userToLogin input
         // Store returned Accesstoken
