@@ -18,10 +18,14 @@ import { registerURL } from "../../../Utils/constants";
         console.log(response);
         const json = await response.json();
         console.log(json);
+
       } catch (error) {
-        console.log(error);
       } finally {
-        console.log("finally");
+        for(let item of json.errors) {
+            if (item.message === "Profile already exists")
+            console.log("Profile existing");
+            return setCheckProfile("Profile already exists");
+        }
       }
     };
 
@@ -37,6 +41,8 @@ const [ email, setEmail ] = useState("");
 const [ avatar, setAvatar ] = useState("https://images.unsplash.com/photo-1548266652-99cf27701ced?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80");
 const [ venueManager, setVenueManager ] = useState(false);
 const [ password, setPassword ] = useState("");
+const [ confirmPassword, setConfirmPassword ] = useState("");
+
 
 const onUsernameChange = (e) => {
     setUsername(e.target.value);
@@ -44,15 +50,18 @@ const onUsernameChange = (e) => {
 const onEmailChange = (e) => {
     setEmail(e.target.value);
 }
-const onAvatarChange = (e) => {
-    setAvatar(e.target.value);
-}
+// const onAvatarChange = (e) => {
+//     setAvatar(e.target.value);
+// }
 const onVenueManagerChange = (e) => {
     setVenueManager(!venueManager);
-    console.log(e.target.value);
 }
 const onPasswordChange = (e) => {
     setPassword(e.target.value);
+}
+
+const onConfirmPasswordChange = (e) => {
+    setConfirmPassword(e.target.value);
 }
 
 const onFormSubmit = async () => {
@@ -61,27 +70,35 @@ const onFormSubmit = async () => {
         email,
         avatar,
         venueManager,
-        password
+        password,
+        confirmPassword
     };
     console.log(bodyContent);
     const isValid = await registerSchema.isValid(bodyContent);
-    console.log("validation: " + isValid);
+    // console.log("Validation: " + isValid)
 
     postData(bodyContent);
     reset();
-    console.log(errors);
 }
 
 return (
     <section>
         <div>
             <form onSubmit={handleSubmit(onFormSubmit)}>
-                <input {...register("name")} name="name" placeholder="Username" type="text" onChange={onUsernameChange}></input>
+                <input {...register("name")} name="name" placeholder="Username" type="text" required onChange={onUsernameChange}></input>
                 <span>{errors.name?.message}</span>
-                <input {...register("email")} name="email" placeholder="email" type="text" required onChange={onEmailChange} ></input>
-                <input {...register("avatar")} name="avatar" placeholder="avatar" type="text" onChange={onAvatarChange} ></input>
+                <input {...register("email", { required: true })} name="email" placeholder="email" type="text" required onChange={onEmailChange} ></input>
+                <span>{errors.email?.message}</span>
+                {/* <input {...register("avatar")} name="avatar" placeholder="avatar" type="text" onChange={onAvatarChange} ></input>
+                <span>{errors.avatar?.message}</span> */}
+                <label>Venue Manager</label>
                 <input {...register("venueManager")} name="venueManager" type="checkbox" checked={venueManager} onChange={onVenueManagerChange} ></input>
+                <span>{errors.benueManager?.message}</span>
                 <input {...register("password")} name="password" placeholder="password" type="text" required onChange={onPasswordChange} ></input>
+                <span>{errors.password?.message}</span>
+                <input {...register("confirmPassword")} name="confirmPassword" placeholder="Confirm Password" type="text" required onChange={onConfirmPasswordChange} ></input>
+                <span>{errors.confirmPassword?.message}</span>
+
                 <button type="submit">Register</button>
             </form>
         </div>
