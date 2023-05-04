@@ -5,10 +5,14 @@ import { venuesURL } from "../../Utils/constants";
 
 const Listings = () => {
     const { data, isLoading, isError } = useApi(URL + venuesURL);
-    const [ state, setState ] = useState({
+    // console.log(data);
+
+        const [ state, setState ] = useState({
         query: "",
         list: []
     })
+
+    console.log(state.list);
 
   if (isLoading) {
     return (
@@ -16,7 +20,7 @@ const Listings = () => {
         <img className="spinner" src="/loaderi.gif" alt="" />
       </div>
     );
-  }
+  } 
 
    if (isError) {
     return <h1>An error occured</h1>;
@@ -31,22 +35,25 @@ const Listings = () => {
             query: e.target.value,
             list: results
         })
-    }
+    };
+
 
     return (
         <>
         <form>
-        <input onChange={handleChange} value={state.query}  type="search"/>
+        <input onChange={handleChange} value={state.query} type="search"/>
         </form>
-        <ul>
-            {(state.query === ' ' ? "Found no matching results" : !state.list.length ? "Your query did not return any results" : state.list.map(item => {
-                return <li key={item.id}>{item.name}</li>
-            }))}
-        </ul>
+        <ul>
+          {(state.list.map(item => {
+            return <li key={item.id}>{item.name}</li>
+          }))}
+        </ul>
         </>
     )
 };
 
-// state.query === ' ' ? "Found no matching results" : 
+            // {(!state.query === '' ? "Found no matching results" : !state.list.length ? "Your query did not return any results" : state.list.map(item => {
+            //     return <li key={item.id}>{item.name}</li>
+            // }))}
 
 export default Listings;

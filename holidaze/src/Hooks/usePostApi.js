@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import useLocalStorage from "./useLocalStorage";
 
 const usePostApi = (url, userData) => {
   const [data, setData] = useState([]);
@@ -22,6 +23,7 @@ const usePostApi = (url, userData) => {
         const json = await response.json();
         console.log(json);
         setIsError(false);
+        // useLocalStorage("authenticate", json.accessToken);
       } catch (error) {
         console.log(error);
         setIsError(true);

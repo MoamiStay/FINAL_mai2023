@@ -1,8 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
-import SearchbarReducer from "./SearchbarSlice";
+// import SearchbarReducer from "./SearchbarSlice";
+import isLoggedReducer from "./LoggedSlice";
 
 export const store = configureStore({
   reducer: {
-    Searchbar: SearchbarReducer,
+    // searchbar: SearchbarReducer,
+    logged: isLoggedReducer,
   },
 });
