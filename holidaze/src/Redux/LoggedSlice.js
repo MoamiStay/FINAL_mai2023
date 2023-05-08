@@ -2,8 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   accesstoken: localStorage.getItem("accessToken"),
-  customAvatar: "",
-  statuss: false,
+  loginStatus: false,
   venueManager: localStorage.getItem("venueManager"),
 };
 
@@ -12,16 +11,13 @@ export const isLoggedSlice = createSlice({
   initialState,
   reducers: {
     loggedin: (state) => {
-      state.statuss = true;
+      state.loginStatus = true;
     },
     logout: (state) => {
       localStorage.removeItem("authenticate");
       localStorage.removeItem("venueManager");
       localStorage.removeItem("username");
-      state.statuss = false;
-    },
-    changeAvatar: (state, action) => {
-      //  state.customAvatar = action.payload
+      state.loginStatus = false;
     },
   },
 });

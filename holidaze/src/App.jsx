@@ -7,6 +7,7 @@ import Register from "./Pages/Register";
 import VenueDetails from "./Pages/VenueDetails";
 import VenueManagerProfile from "./Pages/VenueManagerProfile";
 import CustomerProfile from "./Pages/CustomerProfile";
+import Logout from "./Pages/Logout";
 
 const Layout = () => {
   return (
@@ -29,6 +30,7 @@ function App() {
       <Route path="VenueDetails" element={<VenueDetails />} />
       <Route path="VenueManagerProfile" element={<VenueManagerProfile />} />
       <Route path="CustomerProfile" element={<CustomerProfile />} />
+      <Route path="Logout" element={<Logout />} />
     </Route>
   </Routes>
  </main>

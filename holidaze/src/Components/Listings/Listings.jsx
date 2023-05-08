@@ -4,13 +4,14 @@ import { URL } from "../../Utils/constants";
 import { venuesURL } from "../../Utils/constants";
 
 const Listings = () => {
+
     const { data, isLoading, isError } = useApi(URL + venuesURL);
     // console.log(data);
-
         const [ state, setState ] = useState({
         query: "",
         list: []
     })
+   
 
     console.log(state.list);
 
@@ -43,15 +44,14 @@ const Listings = () => {
         <form>
         <input onChange={handleChange} value={state.query} type="search"/>
         </form>
-        <ul>
-          {(state.list.map(item => {
-            return <li key={item.id}>{item.name}</li>
-          }))}
-        </ul>
+         <ul>
+              {(!state.list?.length ? "Your query did not return any results" : state.list.map(item => {
+               return <li key={item.id}>{item.name}</li>
+             }))}
+        </ul>
         </>
     )
 };
-
             // {(!state.query === '' ? "Found no matching results" : !state.list.length ? "Your query did not return any results" : state.list.map(item => {
             //     return <li key={item.id}>{item.name}</li>
             // }))}
