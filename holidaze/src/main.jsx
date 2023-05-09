@@ -8,9 +8,9 @@ import { store } from "./Redux/store";
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <BrowserRouter>
-        <Provider store={store}>
-    <App />
-        </Provider>
+      <Provider store={store}>
+        <App />
+      </Provider>
     </BrowserRouter>
   </React.StrictMode>,
 )
