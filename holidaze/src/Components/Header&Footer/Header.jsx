@@ -1,9 +1,6 @@
 import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { logout } from "../../Redux/LoggedSlice";
 
 const Header = () => {
- const dispatch = useDispatch();
   return (
     <header>
       <nav>
@@ -16,7 +13,6 @@ const Header = () => {
         <Link to="/VenueManagerProfile">Manager</Link>
         <Link to="/CustomerProfile">Customer</Link>
         <Link to="/Logout">LoggedOut</Link>
-      <button onClick={() => dispatch(logout())}><Link to="/Logout">LoggedOut</Link></button>
       </nav>
     </header>
   );

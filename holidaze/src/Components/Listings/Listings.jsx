@@ -2,18 +2,18 @@ import useApi from "../../Hooks/useApi";
 import { useState } from "react";
 import { URL } from "../../Utils/constants";
 import { venuesURL } from "../../Utils/constants";
+import { Link } from "react-router-dom";
 
 const Listings = () => {
-
     const { data, isLoading, isError } = useApi(URL + venuesURL);
     // console.log(data);
         const [ state, setState ] = useState({
         query: "",
-        list: []
+        list: data
     })
-   
 
-    console.log(state.list);
+    console.log(data);
+   
 
   if (isLoading) {
     return (
@@ -38,22 +38,48 @@ const Listings = () => {
         })
     };
 
-
     return (
         <>
         <form>
         <input onChange={handleChange} value={state.query} type="search"/>
         </form>
-         <ul>
-              {(!state.list?.length ? "Your query did not return any results" : state.list.map(item => {
-               return <li key={item.id}>{item.name}</li>
-             }))}
+        <ul>
+          {data !== [] && state.query === "" ? data.map(item => { 
+
+
+            return (
+              <li key={item.id}>
+              <div>
+              <Link to={`/VenueDetails/${item.id}`}>
+                <img src={item.media[0]} alt={item.name} />
+                <h3>{item.name}</h3>
+                <p>Address: {item.location.address}</p>
+                <p>Description: {item.description}</p>
+                <p>{item.price},-</p>
+                <p>Rating: {item.rating} stars</p>
+              </Link>
+              </div>
+              </li>
+            )
+
+
+          }) : state.list.map(item => {
+            return (
+              <li key={item.id}>
+              <div>
+                <img src={item.media[0]} alt={item.name} />
+                <h3>{item.name}</h3>
+                <p>Address: {item.location.address}</p>
+                <p>Description: {item.description}</p>
+                <p>{item.price},-</p>
+                <p>Rating: {item.rating} stars</p>
+              </div>
+              </li>
+            )
+          })}
         </ul>
         </>
     )
 };
-            // {(!state.query === '' ? "Found no matching results" : !state.list.length ? "Your query did not return any results" : state.list.map(item => {
-            //     return <li key={item.id}>{item.name}</li>
-            // }))}
 
 export default Listings;
