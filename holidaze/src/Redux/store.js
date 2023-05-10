@@ -1,10 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
-// import SearchbarReducer from "./SearchbarSlice";
 import isLoggedReducer from "./LoggedSlice";
+import avatarReducer from "./AvatarSlice";
 
 export const store = configureStore({
   reducer: {
-    // searchbar: SearchbarReducer,
     logged: isLoggedReducer,
+    avatar: avatarReducer,
   },
 });

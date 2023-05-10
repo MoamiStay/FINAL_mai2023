@@ -5,7 +5,7 @@ import { URL } from "../../../Utils/constants";
 import { loginURL } from "../../../Utils/constants";
 import { loginSchema } from "../../../Validation/loginSchema";
 import { useSelector, useDispatch } from "react-redux";
-import { loggedin, logout } from "../../../Redux/LoggedSlice";
+import { loggedin } from "../../../Redux/LoggedSlice";
 
 
 const UserToLogin = () => {
@@ -55,6 +55,7 @@ const onFormSubmit = async () => {
             localStorage.setItem("authenticate", json.accessToken)
             localStorage.setItem("venueManager", json.venueManager)
             localStorage.setItem("username", json.name)
+            localStorage.setItem("avatar", json.avatar)
             setErrorMsg("Login successful");
             const setTrue = () => {
             dispatch(loggedin()) 

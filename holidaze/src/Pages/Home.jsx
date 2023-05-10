@@ -9,8 +9,8 @@ const Home = () => {
         <>
           <div>
             <h1>CUSTOMER - logged in content</h1>
-          <AllListings />
-          <Customer />
+            <Customer />
+            <AllListings />
           </div>
         </>
       )
@@ -20,8 +20,8 @@ const Home = () => {
           <>
             <div>
               <h1>VENUE MANAGER - logged in content</h1>
-            <AllListings />
-            <VenueManager />
+              <VenueManager />
+              <AllListings />
             </div>
           </>
         )

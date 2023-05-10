@@ -12,7 +12,7 @@ const Listings = () => {
         list: data
     })
 
-    console.log(data);
+    // console.log(data);
    
 
   if (isLoading) {
