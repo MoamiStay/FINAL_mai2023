@@ -48,7 +48,7 @@ Must use an approved Planning Application
 Required Links
 The Product Owner has requested links to the following:
 
-A Gantt chart for project timing
+<!-- A Gantt chart for project timing -->
 A design prototype
 A style guide
 A kanban project board
