@@ -22,7 +22,8 @@ A user may view a calendar with available dates for a Venue
 
 <!-- A user with a stud.noroff.no email may register as a customer -->
 
-A registered customer may create a booking at a Venue
+<!-- A registered customer may create a booking at a Venue -->
+
 A registered customer may view their upcoming bookings
 
 <!-- A user with a stud.noroff.no email may register as a Venue manager -->
@@ -71,3 +72,8 @@ Include the required links in the Moodle delivery window using this template for
 All final changes must be merged into the default branch main or master. Other branches will not be checked.
 
 Ensure that the readme.md file describes your project thoroughly, including how to setup and run the project locally and any special instructions for testers.
+
+# EXTRA FIXES ADJUSTMENTS
+
+- Profile image error handling for non-image links
+- Calendar: Force to pick from before picking To

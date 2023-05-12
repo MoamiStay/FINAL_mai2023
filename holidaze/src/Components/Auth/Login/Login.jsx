@@ -5,7 +5,8 @@ import { URL } from "../../../Utils/constants";
 import { loginURL } from "../../../Utils/constants";
 import { loginSchema } from "../../../Validation/loginSchema";
 import { useSelector, useDispatch } from "react-redux";
-import { loggedin } from "../../../Redux/LoggedSlice";
+// import { loggedin } from "../../../Redux/LoggedSlice";
+import { onLogin } from "../../../Redux/AvatarSlice";
 
 
 const UserToLogin = () => {
@@ -57,13 +58,16 @@ const onFormSubmit = async () => {
             localStorage.setItem("venueManager", json.venueManager)
             localStorage.setItem("username", json.name)
             localStorage.setItem("avatar", json.avatar)
-            state.avatar = json.avatar;
             setErrorMsg("Login successful");
-            const setTrue = () => {
-            dispatch(loggedin()) 
-        } 
+            dispatch(
+                onLogin({
+                    avatarImg: json.avatar,
+            }))
+        //     const setTrue = () => {
+        //     dispatch(loggedin()) 
+        // } 
 
-        setTrue()
+        // setTrue()
             // return redirect("/Home");
         }
 

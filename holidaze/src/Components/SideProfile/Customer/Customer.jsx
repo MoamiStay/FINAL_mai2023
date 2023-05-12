@@ -5,12 +5,11 @@ import ChangeImg from "../Avatar/ChangeImg";
 
 const Customer = () => {
      const dispatch = useDispatch();
-     const avatar = useSelector(state => state.avatar.avatar) // with this you can update the img live
-    // const avatar = localStorage.getItem("avatar"); // with this you can only change omg on refresh, but img is correct on login
+     const avatar = useSelector(state => state.avatar.avatar);
      const username = localStorage.getItem("username");
     return (
         <>
-        <img src={avatar} alt="profile img" />
+        <img src={avatar} alt="profile image" />
         <ChangeImg />
         <p>{username}</p>
         <p>View bookings</p>

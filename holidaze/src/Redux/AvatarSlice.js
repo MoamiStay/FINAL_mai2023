@@ -15,9 +15,12 @@ export const avatarSlice = createSlice({
     errorHandler: () => {
       console.log("error handler");
     },
+    onLogin: (state, action) => {
+      state.avatar = action.payload.avatarImg;
+    },
   },
 });
 
-export const { changeAvatar, errorHandler } = avatarSlice.actions;
+export const { changeAvatar, errorHandler, onLogin } = avatarSlice.actions;
 
 export default avatarSlice.reducer;

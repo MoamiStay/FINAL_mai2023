@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   accesstoken: localStorage.getItem("accessToken"),
-  loginStatus: false,
+  // loginStatus: false,
   venueManager: localStorage.getItem("venueManager"),
 };
 
@@ -10,9 +10,9 @@ export const isLoggedSlice = createSlice({
   name: "logged",
   initialState,
   reducers: {
-    loggedin: (state) => {
-      state.loginStatus = true;
-    },
+    // loggedin: (state) => {
+    //   state.loginStatus = true;
+    // },
     logout: (state) => {
       localStorage.removeItem("authenticate");
       localStorage.removeItem("venueManager");
