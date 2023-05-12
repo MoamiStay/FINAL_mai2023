@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { URL,  } from "../../../Utils/constants";
-import { changeAvatar } from "../../../Redux/AvatarSlice";
+import { URL } from "../../../Utils/constants";
+import { changeAvatar, errorHandler } from "../../../Redux/AvatarSlice";
 import { useDispatch } from "react-redux";
 
 const InputNewAvatar = () => {
@@ -8,14 +8,15 @@ const InputNewAvatar = () => {
     const [ state, setState ] = useState({
         query: "",
         avatarUrl: localStorage.getItem("avatar")
-    })
+    });
+    const [ errorMsg, setErrorMsg ] = useState("");
 
     const NewImg = (e) => {
         setState({
             query: e.target.value,
             avatarUrl: e.target.value
         })
-    }
+    };
 
 
 const requestImg = async () => {
@@ -34,16 +35,27 @@ const requestImg = async () => {
         body: JSON.stringify(newAvatar),
         };
         const response = await fetch(URL + "/api/v1/holidaze/profiles/" + username + "/media", postData)
-        // console.log(response);
         const json = await response.json();
-        // console.log(json);
-            dispatch(
+        console.log(response);
+        console.log(json);
+
+        // it accepts broken links too... cant use yup to find valid links. Broken?
+    if(response.ok && state.query !== "") {
+        setErrorMsg("");
+        dispatch(
         changeAvatar({
             profileImg: state.query,
         })
     )
+     } else {
+       setErrorMsg("Invalid img link")
+        dispatch(
+            errorHandler()
+        )
+    }
+
       } catch (error) {
-        console.log(error);
+console.log(error);
       } finally {
         setState({
             query: "",
@@ -55,6 +67,7 @@ const requestImg = async () => {
         <form>
             <input onChange={NewImg} value={state.query} type="text" placeholder="Img URL" />
             <button onClick={requestImg}>Change Img</button>
+            <span>{errorMsg}</span>
         </form>
     )
   }  

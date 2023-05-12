@@ -21,6 +21,7 @@ const [ password, setPassword ] = useState("");
 const [ errorMsg, setErrorMsg ] = useState("");
 const dispatch = useDispatch();
 const statuss = useSelector((state) => state.logged.statuss);
+const avatar = useSelector((state) => state.avatar.avatar);
 
 const onEmailChange = (e) => {
     setEmail(e.target.value);
@@ -47,19 +48,21 @@ const onFormSubmit = async () => {
           body: JSON.stringify(bodyContent),
         };
         const response = await fetch(URL + loginURL, postData);
-        console.log(response);
+        // console.log(response);
         const json = await response.json();
-        console.log(json);
+        // console.log(json);
 
         if(response.ok) {
             localStorage.setItem("authenticate", json.accessToken)
             localStorage.setItem("venueManager", json.venueManager)
             localStorage.setItem("username", json.name)
             localStorage.setItem("avatar", json.avatar)
+            state.avatar = json.avatar;
             setErrorMsg("Login successful");
             const setTrue = () => {
             dispatch(loggedin()) 
         } 
+
         setTrue()
             // return redirect("/Home");
         }
@@ -93,7 +96,6 @@ return (
                 <button type="submit">Login</button>
 
             </form>
-        {/* <button onClick={() => dispatch(logout())}>Logout</button> */}
         </div>
     </section>
 )

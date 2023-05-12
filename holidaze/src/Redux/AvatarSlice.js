@@ -9,16 +9,15 @@ export const avatarSlice = createSlice({
   initialState,
   reducers: {
     changeAvatar: (state, action) => {
-      console.log(action.payload.profileImg);
       localStorage.setItem("avatar", action.payload.profileImg);
       state.avatar = action.payload.profileImg;
     },
-    something: (state) => {
-      localStorage.removeItem("authenticate");
+    errorHandler: () => {
+      console.log("error handler");
     },
   },
 });
 
-export const { changeAvatar } = avatarSlice.actions;
+export const { changeAvatar, errorHandler } = avatarSlice.actions;
 
 export default avatarSlice.reducer;
