@@ -24,3 +24,12 @@ Holidaze - accomodation booking site
 - Fetch listings
 - Authentication/Registration
 - Login
+
+# Redux w/payload example:
+
+search: profileImg
+file: Components/SideProfile/Avatar/InputNewAvatar.jsx + Redux/AvatarSlice.js
+
+# Redirect to a anotehr page on click
+
+<!-- <button onClick={() => dispatch(logout())}><Link to="/Logout">LoggedOut</Link></button> -->

@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 
 const VenueManager = () => {
+  const dispatch = useDispatch();
     return (
         <>
         <h2>Venue Manager profile</h2>

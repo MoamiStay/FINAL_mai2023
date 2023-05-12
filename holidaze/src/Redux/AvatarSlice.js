@@ -9,7 +9,9 @@ export const avatarSlice = createSlice({
   initialState,
   reducers: {
     changeAvatar: (state, action) => {
-      state.loginStatus = true;
+      console.log(action.payload.profileImg);
+      localStorage.setItem("avatar", action.payload.profileImg);
+      state.avatar = action.payload.profileImg;
     },
     something: (state) => {
       localStorage.removeItem("authenticate");

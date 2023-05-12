@@ -17,6 +17,7 @@ export const isLoggedSlice = createSlice({
       localStorage.removeItem("authenticate");
       localStorage.removeItem("venueManager");
       localStorage.removeItem("username");
+      localStorage.removeItem("avatar");
       state.loginStatus = false;
     },
   },

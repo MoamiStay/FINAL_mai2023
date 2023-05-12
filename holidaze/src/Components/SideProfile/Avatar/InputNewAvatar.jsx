@@ -1,7 +1,10 @@
 import { useState } from "react";
 import { URL,  } from "../../../Utils/constants";
+import { changeAvatar } from "../../../Redux/AvatarSlice";
+import { useDispatch } from "react-redux";
 
 const InputNewAvatar = () => {
+    const dispatch = useDispatch();
     const [ state, setState ] = useState({
         query: "",
         avatarUrl: localStorage.getItem("avatar")
@@ -17,7 +20,6 @@ const InputNewAvatar = () => {
 
 const requestImg = async () => {
     event.preventDefault();
-    // img = state.avatarUrl;
         let newAvatar = {
             avatar: state.avatarUrl,
     };
@@ -32,15 +34,20 @@ const requestImg = async () => {
         body: JSON.stringify(newAvatar),
         };
         const response = await fetch(URL + "/api/v1/holidaze/profiles/" + username + "/media", postData)
-        console.log(response);
+        // console.log(response);
         const json = await response.json();
-        console.log(json);
-        localStorage.setItem("avatar", json.avatar)
-        // update img using state in redux probably
+        // console.log(json);
+            dispatch(
+        changeAvatar({
+            profileImg: state.query,
+        })
+    )
       } catch (error) {
         console.log(error);
       } finally {
-        console.log("Finally");
+        setState({
+            query: "",
+        })
       };
 }
 
