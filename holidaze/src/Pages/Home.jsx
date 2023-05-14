@@ -1,16 +1,23 @@
+import { useState } from "react";
 import AllListings from "../Components/Listings/Index";
 import Customer from "../Components/SideProfile/Customer/Customer";
 import VenueManager from "../Components/SideProfile/VenueManager/VenueManager";
+import ViewBookings from "../Components/SideProfile/Customer/ViewBookings";
+import CreateVenue from "../Components/SideProfile/VenueManager/Venues/CreateVenue";
 
 const Home = () => {
+
+  const [ isToggled, setIsToggled ] = useState(false);
 
   if (localStorage.getItem("authenticate") !== null && localStorage.getItem("venueManager") === "false") {
       return (
         <>
           <div>
             <h1>CUSTOMER - logged in content</h1>
+        <button onClick={() => setIsToggled(!isToggled)}>My bookings</button>
             <Customer />
-            <AllListings />
+            {isToggled && <ViewBookings />}
+            {!isToggled && <AllListings />}
           </div>
         </>
       )
@@ -20,8 +27,10 @@ const Home = () => {
           <>
             <div>
               <h1>VENUE MANAGER - logged in content</h1>
+        <button onClick={() => setIsToggled(!isToggled)}>Create venue</button>
               <VenueManager />
-              <AllListings />
+            {isToggled && <CreateVenue />}
+            {!isToggled && <AllListings />}
             </div>
           </>
         )

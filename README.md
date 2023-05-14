@@ -33,3 +33,11 @@ file: Components/SideProfile/Avatar/InputNewAvatar.jsx + Redux/AvatarSlice.js
 # Redirect to a anotehr page on click
 
 <!-- <button onClick={() => dispatch(logout())}><Link to="/Logout">LoggedOut</Link></button> -->
+
+# toggle show-component on click
+
+from /SideProfile/Avatar/ChangeImg.jsx
+
+<!--
+        <button onClick={() => setIsToggled(!isToggled)}>Edit profile image</button>
+        {isToggled && <InputNewAvatar />} -->

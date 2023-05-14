@@ -6,49 +6,75 @@ import { URL } from "../../../Utils/constants";
 import { registerURL } from "../../../Utils/constants";
 import { Link } from "react-router-dom";
 
-
-const UserToRegister = () => {
+const CreateVenue = () => {
 const { register, handleSubmit, formState: { errors }, reset } = useForm(
     {
         resolver: yupResolver(registerSchema),
     }
 );
 
-const [ name, setUsername ] = useState("");
-const [ email, setEmail ] = useState("");
-const avatar = "https://images.unsplash.com/photo-1548266652-99cf27701ced?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80";
-const [ venueManager, setVenueManager ] = useState(false);
-const [ password, setPassword ] = useState("");
-const [ confirmPassword, setConfirmPassword ] = useState("");
+const [ name, setVenueName ] = useState("");
+const [ description, setDescription ] = useState("");
+const [ media, setMedia ] = useState([])
+const [ price, setPrice ] = useState(0);
+const [ maxGuests, setMaxguests ] = useState(100);
+const [ rating, setRating ] = useState(0);
+const [ meta, setMeta ] = useState({
+    wifi: false,
+    parking: false,
+    breakfast: false,
+    pets: false,
+});
+const [ location, setLocation ] = useState({
+    address: "",
+    city: "",
+    zip: "",
+    country: "",
+    continent: "",
+    lat: 0,
+    lng: 0,
+})
 const [ errorMsg, setErrorMsg ] = useState("");
 
 
-const onUsernameChange = (e) => {
-    setUsername(e.target.value);
+const onVenueNameChange = (e) => {
+    // setUsername(e.target.value);
 }
-const onEmailChange = (e) => {
-    setEmail(e.target.value);
+const onDescriptionChange = (e) => {
+    // setEmail(e.target.value);
 }
-const onVenueManagerChange = (e) => {
-    setVenueManager(!venueManager);
+const onMediaChange = (e) => {
+    // setVenueManager(!venueManager);
 }
-const onPasswordChange = (e) => {
-    setPassword(e.target.value);
+const onPriceChange = (e) => {
+    // setPassword(e.target.value);
 }
-const onConfirmPasswordChange = (e) => {
-    setConfirmPassword(e.target.value);
+const onMaxguestsChange = (e) => {
+    // setConfirmPassword(e.target.value);
 }
+const onRatingChange = (e) => {
+    //
+}
+const onMetaChange = (e) => {
+    //
+}
+const onLocationChange = (e) => {
+    //
+}
+
 
 const onFormSubmit = async () => {
     let bodyContent = {
         name,
-        email,
-        avatar,
-        venueManager,
-        password,
-        confirmPassword
+        description,
+        media,
+        price,
+        maxGuests,
+        rating, 
+        meta,
+        location
     };
-    // console.log(bodyContent);
+    console.log(bodyContent);
     const isValid = await registerSchema.isValid(bodyContent);
     // console.log("Validation: " + isValid)
 
@@ -66,22 +92,22 @@ const onFormSubmit = async () => {
         console.log(json);
 
         if(response.ok) {
-            setErrorMsg("Registration successful redirecting to login .. ")
-            
+            reset();
+            setErrorMsg("Venue successfully created ! =)")
         }
 
-        for(let item of json.errors) {
-            if (item.message === "Profile already exists") {
-            setErrorMsg("Profile already exists");
-            } else if (item) {
-            setErrorMsg("Something went wrong"); 
-        }
-      }
+    //     for(let item of json.errors) {
+    //         if (item.message === "Profile already exists") {
+    //         setErrorMsg("Profile already exists");
+    //         } else if (item) {
+    //         setErrorMsg("Something went wrong"); 
+    //     }
+    //   }
 
       } catch (error) {
         console.log(error);
       } finally {
-        reset();
+        // reset();
       };
 
 }
@@ -110,5 +136,4 @@ return (
 )
 };
 
-
-export default UserToRegister;
+export default CreateVenue;
