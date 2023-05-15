@@ -5,9 +5,8 @@ import Home from "./Pages/Home";
 import Login from "./Pages/Login";
 import Register from "./Pages/Register";
 import VenueDetails from "./Pages/VenueDetails";
-import VenueManagerProfile from "./Pages/VenueManagerProfile";
-import CustomerProfile from "./Pages/CustomerProfile";
 import Logout from "./Pages/Logout";
+import EditDelete from "./Pages/EditDelete";
 
 const Layout = () => {
   return (
@@ -28,8 +27,7 @@ function App() {
       <Route path="Login/" element={<Login />} />
       <Route path="Register/" element={<Register />} />
       <Route path="VenueDetails/:id" element={<VenueDetails />} />
-      <Route path="VenueManagerProfile" element={<VenueManagerProfile />} />
-      <Route path="CustomerProfile" element={<CustomerProfile />} />
+      <Route path="EditDelete/:id" element={<EditDelete />} />
       <Route path="Logout" element={<Logout />} />
     </Route>
   </Routes>

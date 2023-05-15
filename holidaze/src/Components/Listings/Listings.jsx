@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 const Listings = () => {
     const { data, isLoading, isError } = useApi(URL + venuesURL);
-    // console.log(data);
+    console.log(data);
         const [ state, setState ] = useState({
         query: "",
         list: data
