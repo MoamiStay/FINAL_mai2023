@@ -4,7 +4,7 @@ import Customer from "../Components/SideProfile/Customer/Customer";
 import VenueManager from "../Components/SideProfile/VenueManager/VenueManager";
 import ViewBookings from "../Components/SideProfile/Customer/ViewBookings";
 import CreateVenue from "../Components/SideProfile/VenueManager/CRUD/CreateVenue";
-import ViewVenues from "../Components/SideProfile/VenueManager/CRUD/MyVenues/ViewVenues";
+import ViewVenues from "../Components/SideProfile/VenueManager/CRUD/ViewVenues";
 
 const Home = () => {
 

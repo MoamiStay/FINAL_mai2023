@@ -1,7 +1,11 @@
+import Edit from "../Components/SideProfile/VenueManager/CRUD/Edit";
+import Delete from "../Components/SideProfile/VenueManager/CRUD/Delete";
+
 const EditDelete = () => {
     return (
         <>
-        <h1>Edit or Delete this Venue =I</h1>
+        <Edit />
+        <Delete />
         </>
     )
 };

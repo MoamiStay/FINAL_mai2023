@@ -8,14 +8,18 @@ export const deleteSlice = createSlice({
   name: "output",
   initialState,
   reducers: {
+    addVenue: (state, action) => {
+      state.output = action.payload.updatedList;
+    },
     deleteVenue: (state, action) => {
       localStorage.setItem("myVenues", action.payload.updatedList);
-      state.output = action.payload.updatedOutput;
-      console.log("At least the reducer is doing something...");
+      // localStorage.setItem("updatedVenues", action.payload.updatedList);
+      // state.output = JSON.parse(localStorage.getItem("updatedVenues"));
+      // state.output = action.payload.updatedOutput;
     },
   },
 });
 
-export const { deleteVenue } = deleteSlice.actions;
+export const { deleteVenue, addVenue } = deleteSlice.actions;
 
 export default deleteSlice.reducer;

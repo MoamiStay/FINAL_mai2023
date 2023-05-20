@@ -1,8 +1,8 @@
 import { URL } from "../../../Utils/constants";
 import useApiAuth from "../../../Hooks/useApiAuth";
-const username = localStorage.getItem("username");
-const myBookingsUrl = "/api/v1/holidaze/profiles/"
-const myBookingsUrlName = username + "/bookings";
+// const username = localStorage.getItem("username");
+const myBookingsUrl = "/api/v1/holidaze/bookings/{id}";
+// const myBookingsUrlName = username + "/bookings";
 // const profile = "/api/v1/holidaze/profiles/";
 
 
