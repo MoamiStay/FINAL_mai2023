@@ -5,20 +5,20 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
-import { createVenueSchema } from "../../../../Validation/createVenueSchema";
+import { editVenueSchema } from "../../../../Validation/editVenueSchema";
 import useApi from "../../../../Hooks/useApi";
 const editEndpoint = "/api/v1/holidaze/venues/"; 
 
 const Edit = () => {
     const { id } = useParams();
     const { data, isLoading, isError } = useApi(URL + editEndpoint + id )
-    // console.log(data);
+    // console.log(data)
 
     const dispatch = useDispatch();
 
 const { register, handleSubmit, formState: { errors }, reset } = useForm(
     {
-        resolver: yupResolver(createVenueSchema),
+        resolver: yupResolver(editVenueSchema),
     }
 );
 
@@ -26,27 +26,18 @@ const [ name, setVenueName ] = useState("");
 const [ description, setDescription ] = useState("");
 const [ media, setMedia ] = useState([])
 const [ price, setPrice ] = useState(0);
-const [ maxGuests, setMaxguests ] = useState(100);
+const [ maxGuests, setMaxGuests ] = useState(100);
 const [ rating, setRating ] = useState(0);
 const [ meta, setMeta ] = useState({
-    wifi: false,
-    parking: false,
     breakfast: false,
+    parking: false,
     pets: false,
+    wifi: false,
 });
 const [ wifiChecked, setWifiChecked ] = useState(false);
 const [ parkingChecked, setParkingChecked ] = useState(false);
 const [ breakfastChecked, setBreakfastChecked ] = useState(false);
 const [ petsChecked, setPetsChecked ] = useState(false);
-
-  useEffect(() => {
-    if (data) {
-      setWifiChecked(data.meta?.wifi || false);
-      setParkingChecked(data.meta?.parking || false);
-      setBreakfastChecked(data.meta?.breakfast || false);
-      setPetsChecked(data.meta?.pets || false);
-    }
-  }, [data]);
 
 const [ location, setLocation ] = useState({
     address: "",
@@ -54,9 +45,39 @@ const [ location, setLocation ] = useState({
     zip: "",
     country: "",
     continent: "",
-    lat: 0,
-    lng: 0,
 })
+
+  useEffect(() => {
+    if (data) {
+        setVenueName(data.name || "");
+        setDescription(data.description || "");
+        setMedia(data.media || []);
+        setPrice(data.price || 0);
+        setMaxGuests(data.maxGuests || 0);
+        setRating(data.rating || 0);
+
+      setWifiChecked(data.meta?.wifi || false);
+      setParkingChecked(data.meta?.parking || false);
+      setBreakfastChecked(data.meta?.breakfast || false);
+      setPetsChecked(data.meta?.pets || false);
+
+    setMeta({
+        breakfast: breakfastChecked,
+        parking: parkingChecked,
+        pets: petsChecked,
+        wifi: wifiChecked,
+    })
+      
+      setLocation({
+      address: data.location?.address || "",
+      city: data.location?.city || "",
+      zip: data.location?.zip || "",
+      country: data.location?.country || "",
+      continent: data.location?.continent || "",
+      })
+    }
+  }, [data]);
+
 const [ errorMsg, setErrorMsg ] = useState("");
 
 const onVenueNameChange = (e) => {
@@ -72,23 +93,43 @@ const onPriceChange = (e) => {
     setPrice(Number(e.target.value));
 }
 const onMaxGuestsChange = (e) => {
-    setMaxguests(Number(e.target.value));
+    setMaxGuests(Number(e.target.value));
 }
 const onRatingChange = (e) => {
     setRating(Number(e.target.value));
 }
 const onMetaWifiChange = (e) => {
-    setWifiChecked(e.target.checked)
+  const checked = e.target.checked;
+  setWifiChecked(checked);
+  setMeta((prevState) => ({
+    ...prevState,
+    wifi: checked,
+  }));
 }
 const onMetaParkingChange = (e) => {
-    setParkingChecked(e.target.checked)
+  const checked = e.target.checked;
+  setParkingChecked(checked);
+  setMeta((prevState) => ({
+    ...prevState,
+    parking: checked,
+  }));
 }
 const onMetaBreakfastChange = (e) => {
-    setBreakfastChecked(e.target.checked)
+  const checked = e.target.checked;
+  setBreakfastChecked(checked);
+  setMeta((prevState) => ({
+    ...prevState,
+    breakfast: checked,
+  }));
 }
 const onMetaPetsChange = (e) => {
-    setPetsChecked(e.target.checked)
-}
+  const checked = e.target.checked;
+  setPetsChecked(checked);
+  setMeta((prevState) => ({
+    ...prevState,
+    pets: checked,
+  }));
+};
 const onLocationAddressChange = (e) => {
     setLocation({
     address: e.target.value,
@@ -147,7 +188,7 @@ const onFormSubmit = async () => {
         location
     };
     console.log(bodyContent);
-    const isValid = await createVenueSchema.isValid(bodyContent);
+    const isValid = await editVenueSchema.isValid(bodyContent);
     console.log("Validation: " + isValid)
     const token = localStorage.getItem("authenticate");
 
@@ -161,9 +202,9 @@ const onFormSubmit = async () => {
           body: JSON.stringify(bodyContent),
         };
         const response = await fetch(URL + editEndpoint + id, postData);
-        console.log(response);
+        // console.log(response);
         const json = await response.json();
-        console.log(json);
+        // console.log(json);
 
         if(response.ok) {
             reset();
@@ -177,24 +218,23 @@ const onFormSubmit = async () => {
       } finally {
         // reset();
       };
-
 }
 
 return (
     <section>
         <div>
             <form onSubmit={handleSubmit(onFormSubmit)}>
-                <input {...register("name")} name="name" placeholder={data.name} type="text" required onChange={onVenueNameChange}></input>
+                <input {...register("name")} name="name" value={name} placeholder="Venue name" type="text" onChange={onVenueNameChange}></input>
                 <span>{errors.name?.message}</span>
-                <input {...register("description", { required: true })} name="description" placeholder={data.description} type="text" required onChange={onDescriptionChange} ></input>
+                <input {...register("description")} name="description" value={description} placeholder="Description" type="text" onChange={onDescriptionChange} ></input>
                 <span>{errors.description?.message}</span>
-                <input {...register("media")} name="media" type="text" placeholder="change image" onChange={onMediaChange} ></input>
+                <input {...register("media")} name="media" type="text" value={media} placeholder="Change image" onChange={onMediaChange} ></input>
                 <span>{errors.media?.message}</span>
-                <input {...register("price")} name="price" placeholder={data.price} type="number" required onChange={onPriceChange} ></input>
+                <input {...register("price")} name="price" value={price} placeholder="0" type="number" onChange={onPriceChange} ></input>
                 <span>{errors.price?.message}</span>
-                <input {...register("maxGuests")} name="maxGuests" placeholder={data.maxGuests} type="number" required onChange={onMaxGuestsChange} ></input>
+                <input {...register("maxGuests")} name="maxGuests" value={maxGuests} placeholder="Maximum amount of guests" type="number" onChange={onMaxGuestsChange} ></input>
                 <span>{errors.maxGuests?.message}</span>
-                <input {...register("rating")} name="rating" placeholder={data.rating} type="number" onChange={onRatingChange}></input>
+                <input {...register("rating")} name="rating" value={rating} placeholder="Rating" type="number" onChange={onRatingChange}></input>
                 <span>{errors.rating?.message}</span>
                 <h3>Meta:</h3>
                 <label>Wifi</label>
@@ -216,10 +256,6 @@ return (
                 <span>{errors.location?.message}</span>
                 <input {...register("continent")} name="continent" value={location.continent} placeholder={data.location?.continent} type="text" onChange={onLocationContinentChange}></input>
                 <span>{errors.location?.message}</span>
-                {/* <input {...register("location")} name="lat" placeholder="lat" type="text" onChange={onLocationChange}></input>
-                <span>{errors.location?.message}</span>
-                <input {...register("location")} name="lng" placeholder="lng" type="text" onChange={onLocationChange}></input>
-                <span>{errors.location?.message}</span> */}
                 
                 <span>{errorMsg}</span>
 

@@ -24,7 +24,7 @@ A user may view a calendar with available dates for a Venue
 
 <!-- A registered customer may create a booking at a Venue -->
 
-A registered customer may view their upcoming bookings
+<!-- A registered customer may view their upcoming bookings -->
 
 <!-- A user with a stud.noroff.no email may register as a Venue manager -->
 
@@ -34,7 +34,7 @@ A registered customer may view their upcoming bookings
 
 <!-- A registered Venue manager may delete a Venue they manage -->
 
-A registered Venue manager may view bookings for a Venue they manage
+<!-- A registered Venue manager may view bookings for a Venue they manage -->
 
 <!-- A registered user may login -->
 
