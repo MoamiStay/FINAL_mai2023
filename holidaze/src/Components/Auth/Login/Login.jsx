@@ -5,12 +5,13 @@ import { URL } from "../../../Utils/constants";
 import { loginURL } from "../../../Utils/constants";
 import { loginSchema } from "../../../Validation/loginSchema";
 import { useSelector, useDispatch } from "react-redux";
-// import { loggedin } from "../../../Redux/LoggedSlice";
+import { Link } from "react-router-dom";
 import { onLogin } from "../../../Redux/AvatarSlice";
-
+import { useNavigate } from "react-router-dom";
+import { Button, Form, Input, Spin } from 'antd';
 
 const UserToLogin = () => {
-
+const navigate = useNavigate();
 const { register, handleSubmit, formState: { errors }, reset } = useForm(
     {
         resolver: yupResolver(loginSchema),
@@ -36,9 +37,9 @@ const onFormSubmit = async () => {
         email,
         password
     };
-    // console.log(bodyContent);
+    console.log(bodyContent);
     const isValid = await loginSchema.isValid(bodyContent);
-    // console.log("Validation: " + isValid)
+    console.log("Validation: " + isValid)
 
       try {
         const postData = {
@@ -58,25 +59,20 @@ const onFormSubmit = async () => {
             localStorage.setItem("venueManager", json.venueManager)
             localStorage.setItem("username", json.name)
             localStorage.setItem("avatar", json.avatar)
-            setErrorMsg("Login successful");
+            setErrorMsg(<Spin/>);
             dispatch(
                 onLogin({
                     avatarImg: json.avatar,
             }))
-        //     const setTrue = () => {
-        //     dispatch(loggedin()) 
-        // } 
-
-        // setTrue()
-            // return redirect("/Home");
+        setTimeout(() => {
+          navigate("/");
+        }, 1500);
         }
 
         for(let item of json.errors) {
-            if (item.message === "Invalid email or password") {
+            if (item) {
             setErrorMsg("Invalid email or password");
-            } else if (item) {
-            setErrorMsg("Invalid email or password"); 
-        }
+            }
       }
       } catch (error) {
         console.log(error);
@@ -86,22 +82,78 @@ const onFormSubmit = async () => {
       };
 }
 
-
 return (
-    <section>
-        <div>
-            <form onSubmit={handleSubmit(onFormSubmit)}>
-                <input {...register("email", { required: true })} name="email" placeholder="email" type="text" required onChange={onEmailChange} ></input>
-                <span>{errors.email?.message}</span>
-                <input {...register("password")} name="password" placeholder="password" type="password" required onChange={onPasswordChange} ></input>
-                <span>{errors.password?.message}</span>
-                <span>{errorMsg}</span>
+    // <section>
+    //     <div>
+    //         <form onSubmit={handleSubmit(onFormSubmit)}>
+    //             {/* <Input {...register("email", { required: true })} name="email" placeholder="email" type="text" required onChange={onEmailChange} /> */}
+    //             <input {...register("email", { required: true })} name="email" placeholder="email" type="text" required onChange={onEmailChange} ></input>
+    //             <span>{errors.email?.message}</span>
+    //             {/* <Input {...register("password")} name="password" placeholder="password" type="password" required onChange={onPasswordChange} /> */}
+    //             <input {...register("password")} name="password" placeholder="password" type="password" required onChange={onPasswordChange} ></input>
+    //             <span>{errors.password?.message}</span>
+    //             <span>{errorMsg}</span>
 
-                <button type="submit">Login</button>
+    //             <Button type="primary">Login</Button>
 
-            </form>
-        </div>
-    </section>
+    //         </form>
+    //     </div>
+    // </section>
+
+<Form
+    name="basic"
+    labelCol={{
+      span: 8,
+    }}
+    wrapperCol={{
+      span: 10,
+    }}
+    style={{
+      maxWidth: 600,
+    }}
+    initialValues={{
+      remember: true,
+    }}
+    onFinish={handleSubmit(onFormSubmit)}
+    autoComplete="off"
+  >
+
+<Form.Item label="Email" name="email">
+<Input {...register("email", { required: true })} name="email" placeholder="email" type="text" required onChange={onEmailChange} />
+</Form.Item>
+<span>{errors.email?.message}</span>
+
+    <Form.Item label="Password" name="password">
+<Input {...register("password")} name="password" placeholder="password" type="password" required onChange={onPasswordChange} />
+    </Form.Item>
+<span>{errors.password?.message}</span>
+
+    <span>{errorMsg}</span>
+
+    <div style={{display: "flex", justifyContent: "center"}}>
+    <Form.Item
+      wrapperCol={{
+        offset: 0,
+        span: 16,
+      }}
+    >
+      <Button type="primary" htmlType="submit">
+        Login
+      </Button>
+    </Form.Item>
+
+        <Form.Item
+      wrapperCol={{
+        offset: 0,
+        span: 16,
+      }}
+    >
+      <Button type="text" htmlType="button">
+        <Link to="/Register">Register</Link>
+      </Button>
+    </Form.Item>
+    </div>
+  </Form>
 )
 
 };

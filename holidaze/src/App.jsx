@@ -1,19 +1,20 @@
 import { Routes, Route, Outlet } from "react-router-dom";
-import Header from "./Components/Header&Footer/Header";
-import Footer from "./Components/Header&Footer/Footer";
+import HeaderNav from "./Components/Header&Footer/Header";
+import FooterNav from "./Components/Header&Footer/Footer";
 import Home from "./Pages/Home";
 import Login from "./Pages/Login";
 import Register from "./Pages/Register";
 import VenueDetails from "./Pages/VenueDetails";
 import Logout from "./Pages/Logout";
 import EditDelete from "./Pages/EditDelete";
+import "./Styles/Antd.css";
 
 const Layout = () => {
   return (
     <div>
-      <Header />
+      <HeaderNav />
       <Outlet />
-      <Footer />
+      <FooterNav />
     </div>
   )
 };

@@ -12,8 +12,6 @@ const VenueManager = () => {
         <img src={avatar} alt="profile image" />
         <ChangeImg />
         <p>{username}</p>
-        <p>Create venue</p>
-        <p>view my venues(edit/delete)</p>
       <button onClick={() => dispatch(logout())}><Link to="/Logout">LoggedOut</Link></button>
         </>
     )

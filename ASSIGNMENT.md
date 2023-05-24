@@ -80,3 +80,11 @@ Ensure that the readme.md file describes your project thoroughly, including how 
 
 - Profile image error handling for non-image links
 - Calendar: Force to pick from before picking To
+
+# What I learned
+
+- Bad idea to toggle different "pages" from homepage since it makes it not possible to restore that state of the page on "back" buttons which makes the page a bit impractical. + hard to get the fresh data to show on initial load without doing a manual reload.
+
+Would rather make a separate actual page instead to make things easier. Mainly an issue due to the "edit" page being the only page that is an actual different page. Either everything should be conditionally rendered or they should all be separate pages.
+
+I had a hard time figuring out how to utilize Redux, and I am still not very confident in using the tool, but I did learn a lot and feel like I got a better understanding of it now.

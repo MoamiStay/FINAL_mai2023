@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate, Navigate } from "react-router-dom";
 import { URL } from "../../../../Utils/constants";
 import { useState } from "react";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -15,6 +15,7 @@ const Edit = () => {
     // console.log(data)
 
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
 const { register, handleSubmit, formState: { errors }, reset } = useForm(
     {
@@ -222,6 +223,9 @@ const onFormSubmit = async () => {
 
 return (
     <section>
+      <div>
+        <button onClick={() => {navigate(-1)}}>Homepage</button>
+      </div>
         <div>
             <form onSubmit={handleSubmit(onFormSubmit)}>
                 <input {...register("name")} name="name" value={name} placeholder="Venue name" type="text" onChange={onVenueNameChange}></input>
