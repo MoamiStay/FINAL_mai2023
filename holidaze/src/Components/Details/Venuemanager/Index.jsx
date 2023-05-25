@@ -5,7 +5,6 @@ const VenueManagerDetails = (props) => {
         <>
         <h1>{data.name}</h1>
         <img src={data.media} alt={data.name} />
-        <p>View calendar</p>
         
         </>
     )

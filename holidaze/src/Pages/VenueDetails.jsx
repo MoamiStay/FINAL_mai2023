@@ -53,7 +53,6 @@ const VenueDetails = () => {
     <div>
     <Details data={data}/>
     <div>
-      <p>Venue Details</p>
     </div>
            </div>
           </div>
@@ -115,7 +114,6 @@ const VenueDetails = () => {
     <div>
     <Details data={data}/>
     <div>
-      <p>Venue Details</p>
     </div>
            </div>
           </div>

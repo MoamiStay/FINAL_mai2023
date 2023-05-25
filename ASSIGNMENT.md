@@ -76,12 +76,6 @@ All final changes must be merged into the default branch main or master. Other b
 
 Ensure that the readme.md file describes your project thoroughly, including how to setup and run the project locally and any special instructions for testers.
 
-# EXTRA FIXES ADJUSTMENTS
-
-- Profile image error handling for non-image links
-- Calendar: Force to pick from before picking To
-- Load more posts
-
 # What I learned
 
 - Bad idea to toggle different "pages" from homepage since it makes it not possible to restore that state of the page on "back" buttons which makes the page a bit impractical. + hard to get the fresh data to show on initial load without doing a manual reload.

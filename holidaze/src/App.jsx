@@ -7,7 +7,6 @@ import Register from "./Pages/Register";
 import VenueDetails from "./Pages/VenueDetails";
 import Logout from "./Pages/Logout";
 import EditDelete from "./Pages/EditDelete";
-import "./Styles/Antd.css";
 
 const Layout = () => {
   return (
