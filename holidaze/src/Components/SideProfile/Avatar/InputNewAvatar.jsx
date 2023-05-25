@@ -2,6 +2,7 @@ import { useState } from "react";
 import { URL } from "../../../Utils/constants";
 import { changeAvatar, errorHandler } from "../../../Redux/AvatarSlice";
 import { useDispatch } from "react-redux";
+import { Button, Input } from "antd";
 
 const InputNewAvatar = () => {
     const dispatch = useDispatch();
@@ -65,9 +66,11 @@ console.log(error);
 
     return (
         <form>
-            <input onChange={NewImg} value={state.query} type="text" placeholder="Img URL" />
-            <button onClick={requestImg}>Change Img</button>
+            <div style={{display: "flex", flexDirection: "column"}}>
+            <Input className="menuText" style={{backgroundColor: "inherit", opacity: "1", width: "70%", margin: "auto" }} onChange={NewImg} value={state.query} type="text" placeholder="Img URL" />
+            <Button type="link" className="menuText" onClick={requestImg}>Change Image</Button>
             <span>{errorMsg}</span>
+            </div>
         </form>
     )
   }  

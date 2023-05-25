@@ -2,6 +2,7 @@ import { logout } from "../../../Redux/LoggedSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import ChangeImg from "../Avatar/ChangeImg";
+import { Img, User } from "./styles";
 
 const Customer = () => {
      const dispatch = useDispatch();
@@ -9,11 +10,9 @@ const Customer = () => {
      const username = localStorage.getItem("username");
     return (
         <>
-        <img src={avatar} alt="profile image" />
+        <Img src={avatar} alt="profile image" />
         <ChangeImg />
-        <p>{username}</p>
-        <p>View bookings</p>
-      <button onClick={() => dispatch(logout())}><Link to="/Logout">LoggedOut</Link></button>
+        <User className="menuText" style={{marginTop: "1rem"}}>{username}</User>
         </>
     )
 };

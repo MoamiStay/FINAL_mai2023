@@ -80,6 +80,7 @@ Ensure that the readme.md file describes your project thoroughly, including how 
 
 - Profile image error handling for non-image links
 - Calendar: Force to pick from before picking To
+- Load more posts
 
 # What I learned
 

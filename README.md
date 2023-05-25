@@ -41,3 +41,6 @@ from /SideProfile/Avatar/ChangeImg.jsx
 <!--
         <button onClick={() => setIsToggled(!isToggled)}>Edit profile image</button>
         {isToggled && <InputNewAvatar />} -->
+
+Resources:
+Missing img: https://depositphotos.com/vector-images/placeholder.html

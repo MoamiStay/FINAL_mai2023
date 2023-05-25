@@ -1,11 +1,14 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
+import { logout } from "../Redux/LoggedSlice";
 import AllListings from "../Components/Listings/Index";
 import Customer from "../Components/SideProfile/Customer/Customer";
 import VenueManager from "../Components/SideProfile/VenueManager/VenueManager";
 import ViewBookings from "../Components/SideProfile/Customer/ViewBookings";
 import CreateVenue from "../Components/SideProfile/VenueManager/CRUD/CreateVenue";
 import ViewVenues from "../Components/SideProfile/VenueManager/CRUD/ViewVenues";
-import { Layout, theme } from 'antd';
+import { Layout, theme, Button } from 'antd';
 import React from 'react';
 const { Content, Sider } = Layout;
 
@@ -14,6 +17,8 @@ const Home = () => {
       token: { colorBgContainer },
   } = theme.useToken();
 
+  const dispatch = useDispatch();
+
   const [ toggleCreate, setToggleCreate ] = useState(false);
   const [ toggleVenues, setToggleVenues ] = useState(false);
   const [ isToggled, setIsToggled ] = useState(false);
@@ -21,16 +26,6 @@ const Home = () => {
 
   if (localStorage.getItem("authenticate") !== null && localStorage.getItem("venueManager") === "false") {
       return (
-        // <>
-        //   <div>
-        //     <h1>CUSTOMER - logged in content</h1>
-        // <button onClick={() => setIsToggled(!isToggled)}>My bookings</button>
-        //     <Customer />
-        //     {isToggled && <ViewBookings />}
-        //     {!isToggled && <AllListings />}
-        //   </div>
-        // </>
-
     <Layout>
       <Sider
         breakpoint="lg"
@@ -44,7 +39,10 @@ const Home = () => {
       >
         <div className="demo-logo-vertical" />
       <Customer />
-      <button onClick={() => setIsToggled(!isToggled)}>My bookings</button>
+      <div style={{display: "flex", flexDirection: "column", justifyContent: "flex-start" }}>
+      <Button type="text" className="menuText" style={{textAlign: "left"}} onClick={() => setIsToggled(!isToggled)}>My bookings</Button>
+      <Button type="link" style={{textAlign: "left"}} onClick={() => dispatch(logout())}><Link to="/Logout">Log out</Link></Button>
+      </div>
       </Sider>
 
       <Layout>
@@ -61,8 +59,7 @@ const Home = () => {
             }}
           >
            <div>
-             <h1>CUSTOMER - logged in content</h1>
-         {/* <button onClick={() => setIsToggled(!isToggled)}>My bookings</button> */}
+             <h1>CUSTOMER</h1>
              {isToggled && <ViewBookings />}
              {!isToggled && <AllListings />}
            </div>
@@ -90,16 +87,6 @@ const Home = () => {
         }
 
         return (
-          //   <div>
-          //     <h1>VENUE MANAGER - logged in content</h1>
-          //     <button onClick={() => {goHome()}}>Home</button>
-          //     <button onClick={() => {onCreateClick()}}>Create venue</button>
-          //     <button onClick={() => {onVenuesClick()}}>My venues</button>
-          //     <VenueManager />
-          //     {!toggleVenues && !toggleCreate && <AllListings />}
-          //     {toggleCreate && <CreateVenue /> }
-          //     {toggleVenues && <ViewVenues />}
-          //   </div>
     <Layout>
       <Sider
         breakpoint="lg"
@@ -113,9 +100,12 @@ const Home = () => {
       >
         <div className="demo-logo-vertical" />
        <VenueManager />
-       <button onClick={() => {goHome()}}>Home</button>
-       <button onClick={() => {onCreateClick()}}>Create venue</button>
-       <button onClick={() => {onVenuesClick()}}>My venues</button>
+       <div style={{display: "flex", flexDirection: "column", justifyContent: "flex-start" }}>
+       <Button type="text" className="menuText" style={{textAlign: "left"}} onClick={() => {goHome()}}>Home</Button>
+       <Button type="text" className="menuText" style={{textAlign: "left"}} onClick={() => {onCreateClick()}}>Create venue</Button>
+       <Button type="text" className="menuText" style={{textAlign: "left"}} onClick={() => {onVenuesClick()}}>My venues</Button>
+       <Button type="link" style={{textAlign: "left"}} onClick={() => dispatch(logout())}><Link to="/Logout">Log out</Link></Button>
+       </div>
       </Sider>
 
       <Layout>
@@ -132,7 +122,7 @@ const Home = () => {
             }}
           >
            <div>
-             <h1>CUSTOMER - logged in content</h1>
+             <h1>VENUE MANAGER</h1>
              {!toggleVenues && !toggleCreate && <AllListings />}
              {toggleCreate && <CreateVenue /> }
              {toggleVenues && <ViewVenues />}

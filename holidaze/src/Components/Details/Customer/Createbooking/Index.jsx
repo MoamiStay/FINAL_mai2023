@@ -1,4 +1,6 @@
 import { URL } from "../../../../Utils/constants";
+import { Input, Card, Button } from "antd";
+import { InputNumber } from 'antd';
 const bookingURL = "/api/v1/holidaze/bookings";
 
 import { useState } from "react";
@@ -11,9 +13,8 @@ const [ dateTo, setDateTo ] = useState("");
 const venueId = props.data.id;
 const [ errorMsg, setErrorMsg ] = useState(""); 
 
-const onGuestsChange = (e) => {
-    let guests = e.target.value;
-    setGuests(Number(guests))
+const onGuestsChange = (value) => {
+    setGuests(value);
 }
 const onDateFromChange = (e) => {
     setDateFrom(e.target.value)
@@ -58,17 +59,19 @@ const makeBooking = async () => {
     const username = localStorage.getItem("username");
     return (
         <>
-        <section>
-        <h2>Create booking for: {username}</h2>
+        <Card title={"Book this venue" } bordered={false}>
+        <p>Create booking for: {username}</p>
+
         <form>
-        {/* <label for="guests">Number of guests</label> */}
-        <input onChange={onGuestsChange} type="number" name="guests" value={guests} min="1" max="10"></input>
-        <input onChange={onDateFromChange} type="date" value={dateFrom} name="start"></input>
-        <input onChange={onDateToChange} type="date" value={dateTo} name="start"min={dateFrom}></input>
-        <button onClick={makeBooking}>Make booking</button>
+        <label htmlFor="guests">Number of guests </label>
+        <InputNumber onChange={onGuestsChange} name="guests" value={guests} min={1} max={10} />
+        <Input onChange={onDateFromChange} type="date" value={dateFrom} name="start"></Input>
+        <Input onChange={onDateToChange} type="date" value={dateTo} name="start"min={dateFrom}></Input>
+        <Button type="primary" onClick={makeBooking}>Make booking</Button>
         <span>{errorMsg}</span>
         </form>
-        </section>
+
+        </Card>
         </>
     )
 };
