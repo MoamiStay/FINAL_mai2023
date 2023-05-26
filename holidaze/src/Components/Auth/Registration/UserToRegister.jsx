@@ -43,6 +43,11 @@ const onConfirmPasswordChange = (e) => {
 }
 
 const onFormSubmit = async () => {
+  setErrorMsg(
+      <div style={{display: "flex", justifyContent: "center"}}>
+        <Spin />
+      </div>
+  )
     let bodyContent = {
         name,
         email,
@@ -74,7 +79,11 @@ const onFormSubmit = async () => {
           navigate("/Login");
         }, 100); 
         } 
-        // else setErrorMsg("Something went wrong")
+        else setErrorMsg(
+       <div style={{display: "flex", justifyContent: "center", color: "red"}}>
+        <p>Something went wrong</p>
+      </div>
+        )
 
     //     for(let item of json.errors) {
     //         if (item.message === "Profile already exists") {
@@ -133,10 +142,12 @@ return (
     autoComplete="off"
   >
 
+
 <Form.Item label="Venue Manager" name="venueManager">
     <Input {...register("venueManager")} name="venueManager" type="checkbox" checked={venueManager} onChange={onVenueManagerChange} />
 </Form.Item>
 <span>{errors.venueManager?.message}</span>
+
 
 <Form.Item label="Username" name="username">
     <Input {...register("name")} name="name" placeholder="Username" type="text" required onChange={onUsernameChange} />
@@ -144,12 +155,14 @@ return (
 <span>{errors.name?.message}</span>
 
 <Form.Item label="Email" name="email">
-    <Input {...register("email", { required: true })} name="email" placeholder="email" type="text" required onChange={onEmailChange} />
+    <Input {...register("email", { required: true })} name="email" placeholder="@noroff.no" type="text" required onChange={onEmailChange} />
+    <span style={{fontSize: "smaller"}}>Must be an @noroff.no/@stud.noroff.no email</span>
 </Form.Item>
 <span>{errors.email?.message}</span>
 
 <Form.Item label="Password" name="password">
     <Input {...register("password")} name="password" placeholder="password" type="password" required onChange={onPasswordChange} />
+    <span style={{fontSize: "smaller"}}>Min 8 characters</span>
 </Form.Item>
 <span>{errors.password?.message}</span>
 
@@ -179,7 +192,7 @@ return (
       }}
     >
       <Button type="text" htmlType="button">
-        <Link to="/Login">Back to login</Link>
+        <Link to="/Login" style={{fontSize: "smaller"}}>Back to login</Link>
       </Button>
     </Form.Item>
     </div>

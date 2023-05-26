@@ -3,7 +3,7 @@ import { useState } from "react";
 import { URL } from "../../Utils/constants";
 import { venuesURL } from "../../Utils/constants";
 import { Link } from "react-router-dom";
-import { Col, Row, Card, Rate, Input, Divider } from "antd";
+import { Col, Row, Card, Rate, Input, Divider, Spin } from "antd";
 import { ImgContainer, Img } from "./styles";
 
 const Listings = () => {
@@ -17,8 +17,8 @@ const Listings = () => {
 
   if (isLoading) {
     return (
-      <div className="spinner">
-        <img className="spinner" src="/loaderi.gif" alt="" />
+      <div style={{display: "flex", justifyContent: "center"}}>
+        <Spin />
       </div>
     );
   } 

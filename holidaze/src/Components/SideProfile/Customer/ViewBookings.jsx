@@ -1,11 +1,6 @@
 import { URL } from "../../../Utils/constants";
 import useApiAuth from "../../../Hooks/useApiAuth";
 import { Link } from "react-router-dom";
-const username = localStorage.getItem("username");
-const myBookingsUrl = "/api/v1/holidaze/profiles/"
-const myBookingsUrlName = username + "/bookings?sortOrder=desc&_venue=true";
-
-
 // function getDaysBetweenDates(dateFrom, dateTo) {
 //   const oneDay = 24 * 60 * 60 * 1000; // Number of milliseconds in one day
 //   const fromDate = new Date(dateFrom); // Convert string to Date object
@@ -17,12 +12,24 @@ const myBookingsUrlName = username + "/bookings?sortOrder=desc&_venue=true";
 // }
 
 const ViewBookings = () => {
-        const { data, isLoading, isError } = useApiAuth(URL + myBookingsUrl + myBookingsUrlName);
-        // console.log(data);
+const username = localStorage.getItem("username");
+const myBookingsUrl = "/api/v1/holidaze/profiles/"
+const myBookingsUrlName =  "/bookings?sortOrder=desc&_venue=true";
+
+if  (!username) {
+    return <p>Loading...</p>
+};
         
+        const { data, isLoading, isError } = useApiAuth(URL + myBookingsUrl + username +  myBookingsUrlName);
+        // console.log(data);
         return (
-            <>
-            <h1>Hi! I'm your bookings</h1>
+      <>
+    {isLoading ? (
+      <p>Loading...</p>
+    ) : isError ? (
+      <p>Error occurred while fetching data. Please try reloading the page.</p>
+    ) : (
+      <>
             {data.map((item, idx) => {
                 return (
                     <div key={idx}>
@@ -36,8 +43,11 @@ const ViewBookings = () => {
                     </div>
                 )
             })}
-            </>
-        )
+      </>
+    )}
+  </>
+);
+
 };
 
 export default ViewBookings;

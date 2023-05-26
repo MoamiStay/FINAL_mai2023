@@ -1,7 +1,7 @@
 import Edit from "../Components/SideProfile/VenueManager/CRUD/Edit";
 import Delete from "../Components/SideProfile/VenueManager/CRUD/Delete";
 import VenueManager from "../Components/SideProfile/VenueManager/VenueManager";
-import { Layout, theme } from 'antd';
+import { Layout, theme, Button } from 'antd';
 import React from 'react';
 import { useNavigate } from "react-router-dom";
 const { Content, Sider } = Layout;
@@ -26,7 +26,7 @@ const EditDelete = () => {
       >
         <div className="demo-logo-vertical" />
        <VenueManager />
-       <button onClick={() => {navigate("/")}}>Home</button>
+       <Button className="menuText" type="text" onClick={() => {navigate("/")}}>Home</Button>
       </Sider>
 
       <Layout>

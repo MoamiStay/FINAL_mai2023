@@ -59,7 +59,11 @@ const onFormSubmit = async () => {
             localStorage.setItem("venueManager", json.venueManager)
             localStorage.setItem("username", json.name)
             localStorage.setItem("avatar", json.avatar)
-            setErrorMsg(<Spin/>);
+            setErrorMsg(
+            <div style={{display: "flex", justifyContent: "center", padding: "15px 0 30px 0" }}>
+              <Spin />
+            </div>
+              );
             dispatch(
                 onLogin({
                     avatarImg: json.avatar,
@@ -149,7 +153,7 @@ return (
       }}
     >
       <Button type="text" htmlType="button">
-        <Link to="/Register">Register</Link>
+        <Link to="/Register" style={{fontSize: "smaller"}}>Register</Link>
       </Button>
     </Form.Item>
     </div>

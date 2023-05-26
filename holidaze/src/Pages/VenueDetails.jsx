@@ -3,12 +3,11 @@ import { useParams, useNavigate } from "react-router-dom";
 import { getVenuesURL } from "../Utils/constants";
 import { URL } from "../Utils/constants";
 import Details from "../Components/Details/Index";
-import { Layout, theme } from 'antd';
+import { Layout, theme, Button } from 'antd';
 import React from 'react';
 import VenueManager from "../Components/SideProfile/VenueManager/VenueManager";
 import Customer from "../Components/SideProfile/Customer/Customer";
 const { Content, Sider } = Layout;
-
 
 const VenueDetails = () => {
   const { id } = useParams();
@@ -20,13 +19,6 @@ const VenueDetails = () => {
 
     if (localStorage.getItem("authenticate") !== null && localStorage.getItem("venueManager") === "false") {
   return (
-    // <>
-    // <Details data={data}/>
-    // <div>
-    //   <p>Venue Details</p>
-    // </div>
-    // </>
-
         <Layout>
       <Sider
         breakpoint="lg"
@@ -34,7 +26,7 @@ const VenueDetails = () => {
       >
         <div className="demo-logo-vertical" />
         <Customer />
-       <button onClick={() => {navigate("/")}}>Home</button>
+       <Button className="menuText" type="text" onClick={() => {navigate("/")}}>Home</Button>
       </Sider>
 
       <Layout>
@@ -69,7 +61,7 @@ const VenueDetails = () => {
       >
         <div className="demo-logo-vertical" />
         <VenueManager />
-       <button onClick={() => {navigate("/")}}>Home</button>
+       <Button className="menuText" type="text" onClick={() => {navigate("/")}}>Home</Button>
       </Sider>
 
       <Layout>
@@ -88,7 +80,6 @@ const VenueDetails = () => {
     <div>
     <Details data={data}/>
     <div>
-      <p>Venue Details</p>
     </div>
            </div>
           </div>

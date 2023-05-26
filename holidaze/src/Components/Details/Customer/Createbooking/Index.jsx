@@ -1,6 +1,6 @@
 import { URL } from "../../../../Utils/constants";
 import { Input, Card, Button } from "antd";
-import { InputNumber } from 'antd';
+import { InputNumber, Spin } from 'antd';
 const bookingURL = "/api/v1/holidaze/bookings";
 
 import { useState } from "react";
@@ -24,6 +24,11 @@ const onDateToChange = (e) => {
 }
 
 const makeBooking = async () => {
+    setErrorMsg(
+      <div style={{display: "flex", justifyContent: "center"}}>
+        <Spin />
+      </div>
+    )
     event.preventDefault();
     let bodyContent = {
         dateFrom,
@@ -48,7 +53,7 @@ const makeBooking = async () => {
         // console.log(json);
         if(response.ok) {
             setErrorMsg("You created a booking for ** guests from *** until ****")
-        }
+        } else setErrorMsg("Something went wrong")
     } catch (error) {
         console.log(error);
     } finally {
