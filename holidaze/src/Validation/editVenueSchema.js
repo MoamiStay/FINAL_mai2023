@@ -3,7 +3,7 @@ import * as yup from "yup";
 export const editVenueSchema = yup.object().shape({
   name: yup.string().trim(),
   description: yup.string().trim(),
-  media: yup.string().url(),
+  media: yup.array(),
   price: yup.number().min(0, "Price can't be lower than 0"),
   maxGuests: yup
     .number()

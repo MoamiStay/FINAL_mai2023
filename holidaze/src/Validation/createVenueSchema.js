@@ -7,7 +7,7 @@ export const createVenueSchema = yup.object().shape({
     .min(3, "Username must be at least 3 characters")
     .required(),
   description: yup.string().trim(),
-  media: yup.string().url(),
+  // media: yup.array(),
   price: yup.number().min(0, "Price can't be lower than 0").required(),
   maxGuests: yup
     .number()

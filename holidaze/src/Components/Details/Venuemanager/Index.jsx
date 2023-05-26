@@ -28,7 +28,7 @@ const VenueManagerDetails = (props) => {
             {/* <Rate style={{ display: "flex", justifyContent: "flex-end" }} disabled defaultValue={data?.rating} /> */}
             {data?.rating && <Rate style={{ display: "flex", justifyContent: "flex-end" }} disabled defaultValue={rating} />}
         </div >
-        {data.location?.address !== "Unknown"  ? data.location?.address + data.location?.city + data.location?.country : <p>Address unknown</p>}
+        {data.location?.address !== "Unknown"  ? data.location?.address + ", " + data.location?.city + ", " + data.location?.country : <p>Address unknown</p>}
         <div>
         <h3>Description</h3>
         <p>{data.description}</p>

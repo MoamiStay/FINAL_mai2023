@@ -15,3 +15,11 @@ export const Img = styled.img`
   height: 8rem;
   object-fit: cover;
 `;
+
+export const ImgCard = styled.img`
+  display: flex;
+  width: 100%;
+  height: 10rem;
+  object-fit: cover;
+  padding-bottom: 10px;
+`;
