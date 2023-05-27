@@ -20,6 +20,14 @@ html {
     color: ${(props) => props.theme.color.primaryText};
 }
 
+
+/* main {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: red;
+} */
+
 @media screen and (min-width: 320px) {
 
 // 

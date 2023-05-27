@@ -2,7 +2,7 @@ import LoginIndex from "../Components/Auth/Login/Index";
 
 const Login = () => {
   return (
-    <div>
+    <div style={{ minHeight: "100vh"}}>
       <LoginIndex />
     </div>
   );

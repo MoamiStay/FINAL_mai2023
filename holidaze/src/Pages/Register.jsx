@@ -2,7 +2,7 @@ import RegisterIndex from "../Components/Auth/Registration/Index";
 
 const Register = () => {
   return (
-    <div>
+    <div style={{ minHeight: "100vh"}}>
       <RegisterIndex />
     </div>
   );

@@ -12,7 +12,7 @@ const Layout = () => {
   return (
     <div>
       <HeaderNav />
-      <Outlet />
+      <Outlet/>
       <FooterNav />
     </div>
   )
@@ -20,7 +20,7 @@ const Layout = () => {
 
 function App() {
   return (
- <main>
+ <main style={{ backgruondColor: "blue"}} >
   <Routes>
     <Route path="/" element={<Layout />}>
       <Route index element={<Home />} />

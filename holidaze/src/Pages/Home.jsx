@@ -27,7 +27,7 @@ const Home = () => {
   if (localStorage.getItem("authenticate") !== null && localStorage.getItem("venueManager") === "false") {
       return (
     <Layout>
-      <Sider
+      <Sider style={{ minHeight: "100vh"}}
         breakpoint="lg"
         collapsedWidth="0"
         onBreakpoint={(broken) => {
@@ -88,7 +88,7 @@ const Home = () => {
 
         return (
     <Layout>
-      <Sider
+      <Sider style={{ minHeight: "100vh"}}
         breakpoint="lg"
         collapsedWidth="0"
         onBreakpoint={(broken) => {
@@ -137,6 +137,7 @@ const Home = () => {
         <Content
           style={{
             margin: '24px 16px 0',
+            minHeight: "100vh"
           }}
         >
           <div

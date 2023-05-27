@@ -14,7 +14,7 @@ const EditDelete = () => {
 
     return (
     <Layout>
-      <Sider
+      <Sider style={{ minHeight: "100vh"}}
         breakpoint="lg"
         collapsedWidth="0"
         // onBreakpoint={(broken) => {
