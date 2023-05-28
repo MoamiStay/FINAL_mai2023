@@ -6,17 +6,17 @@ Holidaze - accomodation booking site
 
 # Delivery
 
-Netlify hosted site:
-https://holidaze-moami.netlify.app/
 
-Trello:  
-https://trello.com/invite/b/59Le7GbB/ATTI219558ad0fd21d93d64637a41cdca09eB84FA9D0/holidaze
+[Netlify hosted page](https://holidaze-moami.netlify.app/) 
 
-Style Guide:
-https://www.figma.com/file/kr6CymBQ4jGtg5hxFaXoWT/Holidaze-Exam-Final?type=design&node-id=101%3A276&t=Y56DNKw17CXhhvmx-1
+[Trello](https://trello.com/invite/b/59Le7GbB/ATTI219558ad0fd21d93d64637a41cdca09eB84FA9D0/holidaze) 
 
-Figma Prototype:
-https://www.figma.com/file/kr6CymBQ4jGtg5hxFaXoWT/Holidaze-Exam-Final?type=design&node-id=1%3A130&t=Y56DNKw17CXhhvmx-1
+[Style Guide](https://www.figma.com/file/kr6CymBQ4jGtg5hxFaXoWT/Holidaze-Exam-Final?type=design&node-id=101%3A276&t=Y56DNKw17CXhhvmx-1)
+
+
+[Figma Prototype Desktop](https://www.figma.com/file/kr6CymBQ4jGtg5hxFaXoWT/Holidaze-Exam-Final?type=design&node-id=1%3A130&t=Y56DNKw17CXhhvmx-1)
+
+[Figma Prototype Mobile](https://www.figma.com/file/kr6CymBQ4jGtg5hxFaXoWT/Holidaze-Exam-Final?type=design&node-id=1%3A131&t=GSee9w8aJ2FGaSsg-1)
 
 Gantt:
 ![header](./HeaderReadme/Gantt.png "Gantt" )  
