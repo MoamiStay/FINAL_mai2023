@@ -9,7 +9,6 @@ html {
 };
 
 .menuText {
-    /* color: ${(props) => props.theme.color.menuText}; */
     color: #e8e8e8;
     ::placeholder {
         color: #e8e8e8;
@@ -20,13 +19,21 @@ html {
     color: ${(props) => props.theme.color.primaryText};
 }
 
+.link {
+    color: black;
+}
 
-/* main {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    background-color: red;
-} */
+.link:hover {
+    color: #a2773f;
+}
+
+.menu-link {
+    color: white;
+}
+
+.menu-link:hover {
+    color: #a2773f;
+}
 
 @media screen and (min-width: 320px) {
 

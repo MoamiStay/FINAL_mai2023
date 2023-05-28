@@ -6,12 +6,12 @@ export const registerSchema = yup.object().shape({
     .string()
     .trim()
     .matches(
-      "^[A-Za-z0-9._%+-]+@noroff.no$",
-      "Email must be an @noroff.no email"
+      /^[A-Za-z0-9._%+-]+@(noroff\.no|stud\.noroff\.no)$/,
+      "Email must be an @noroff.no/@stud.noroff.no email"
     ),
-  password: yup.string().trim().min(7),
+  password: yup.string().trim().min(8, "Password must be minimum 8 characters"),
   confirmPassword: yup
     .string()
     .trim()
-    .oneOf([yup.ref("password")], "Password do not match"),
+    .oneOf([yup.ref("password")], "Passwords do not match"),
 });

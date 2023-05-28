@@ -87,23 +87,6 @@ const onFormSubmit = async () => {
 }
 
 return (
-    // <section>
-    //     <div>
-    //         <form onSubmit={handleSubmit(onFormSubmit)}>
-    //             {/* <Input {...register("email", { required: true })} name="email" placeholder="email" type="text" required onChange={onEmailChange} /> */}
-    //             <input {...register("email", { required: true })} name="email" placeholder="email" type="text" required onChange={onEmailChange} ></input>
-    //             <span>{errors.email?.message}</span>
-    //             {/* <Input {...register("password")} name="password" placeholder="password" type="password" required onChange={onPasswordChange} /> */}
-    //             <input {...register("password")} name="password" placeholder="password" type="password" required onChange={onPasswordChange} ></input>
-    //             <span>{errors.password?.message}</span>
-    //             <span>{errorMsg}</span>
-
-    //             <Button type="primary">Login</Button>
-
-    //         </form>
-    //     </div>
-    // </section>
-
 <Form
     name="basic"
     labelCol={{

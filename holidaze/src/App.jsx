@@ -7,6 +7,7 @@ import Register from "./Pages/Register";
 import VenueDetails from "./Pages/VenueDetails";
 import Logout from "./Pages/Logout";
 import EditDelete from "./Pages/EditDelete";
+import NotFound from "./Pages/NotFound";
 
 const Layout = () => {
   return (
@@ -29,6 +30,7 @@ function App() {
       <Route path="VenueDetails/:id" element={<VenueDetails />} />
       <Route path="EditDelete/:id" element={<EditDelete />} />
       <Route path="Logout" element={<Logout />} />
+      <Route path='*' element={<NotFound />} />
     </Route>
   </Routes>
  </main>

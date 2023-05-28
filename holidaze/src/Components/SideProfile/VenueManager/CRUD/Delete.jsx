@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Button } from "antd";
 const token = localStorage.getItem("authenticate");
 import { URL } from "../../../../Utils/constants";
 const deleteEndpoint = "/api/v1/holidaze/venues/";
@@ -42,7 +43,7 @@ const Delete = () => {
 
     return (
         <>
-    <button onClick={() => {deleteMe()}}>Delete</button>
+    <Button danger onClick={() => {deleteMe()}}>Delete</Button>
     <span>{feedbackMsg}</span>
         </>
     )

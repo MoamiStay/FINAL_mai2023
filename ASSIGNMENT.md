@@ -45,15 +45,16 @@ A user may view a calendar with available dates for a Venue
 # Technical Restrictions
 
 <!-- Must use an approved JavaScript Framework -->
-
-Must use an approved CSS Framework
+<!--
+Must use an approved CSS Framework -->
 
 <!-- Must be hosted on an approved Static Host
 (Currently only manual upolad works) -->
 
 <!-- Must use an approved Design Application -->
 
-Must use an approved Planning Application
+<!-- Must use an approved Planning Application -->
+
 Required Links
 
 # Must be included
@@ -62,11 +63,12 @@ Required Links
 
 A design prototype
 A style guide
-A kanban project board
+
+<!-- A kanban project board -->
+
 A repository link
 A hosted application demo link
-Approved Resources
-This list covers libraries and services that have been vetted by the company and approved for use.
+Approved Resources; This list covers libraries and services that have been vetted by the company and approved for use.
 
 # Delivery
 

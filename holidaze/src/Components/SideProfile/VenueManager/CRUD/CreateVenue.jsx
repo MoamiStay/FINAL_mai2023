@@ -1,10 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm, Controller } from "react-hook-form";
 import { createVenueSchema } from "../../../../Validation/createVenueSchema";
 import { URL } from "../../../../Utils/constants";
 import { useDispatch } from "react-redux";
 import { Row, Col, Button, Input } from "antd";
+const { TextArea } = Input;
 
 const createVenueURL = "/api/v1/holidaze/venues";
 
@@ -20,6 +21,7 @@ const CreateVenue = () => {
     resolver: yupResolver(createVenueSchema)
   });
 
+  const [successMsg, setSuccessMsg] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
 
   const onFormSubmit = async (data) => {
@@ -41,26 +43,30 @@ const CreateVenue = () => {
 
       if (response.ok) {
         reset();
-        setErrorMsg("Venue successfully created! =)");
+        setErrorMsg("");
+        setSuccessMsg("Venue successfully created")
       } else {
-        setErrorMsg("Something went wrong");
+        setErrorMsg((json.errors[0].message));
+        setSuccessMsg("");
       }
     } catch (error) {
-      console.log(error);
+      setErrorMsg(error)
+    } finally {
+      reset();
     }
   };
 
   return (
     <section>
       <form onSubmit={handleSubmit(onFormSubmit)}>
-        <Row gutter={[16, 16]}>
+        <Row gutter={[16,16]}>
           <Col xs={24} sm={24} md={8} lg={8}>
             <h3>Required</h3>
-            <Controller
+            <Controller 
               control={control}
               name="name"
               render={({ field }) => (
-                <Input {...field} placeholder="Venue name" type="text" />
+                <Input style={{marginTop: "10px"}} {...field} placeholder="Venue name" type="text" />
               )}
             />
             <span>{errors.name?.message}</span>
@@ -69,7 +75,7 @@ const CreateVenue = () => {
               control={control}
               name="description"
               render={({ field }) => (
-                <Input {...field} placeholder="Description" type="text" />
+                <TextArea allowClear rows={4} style={{marginTop: "10px"}} {...field} placeholder="Description" />
               )}
             />
             <span>{errors.description?.message}</span>
@@ -79,6 +85,8 @@ const CreateVenue = () => {
               name="media"
               render={({ field }) => (
                 <Input 
+                style={{marginTop: "10px"}}
+                allowClear
                 {...field} 
                 placeholder="Image" 
                 type="text"
@@ -95,7 +103,7 @@ const CreateVenue = () => {
               control={control}
               name="price"
               render={({ field }) => (
-                <Input {...field} placeholder="Price" type="number" />
+                <Input style={{marginTop: "10px"}} {...field} placeholder="Price" type="number" />
               )}
             />
             <span>{errors.price?.message}</span>
@@ -105,6 +113,7 @@ const CreateVenue = () => {
               name="maxGuests"
               render={({ field }) => (
                 <Input
+                style={{marginTop: "10px"}}
                   {...field}
                   placeholder="Maximum number of guests"
                   type="number"
@@ -119,7 +128,7 @@ const CreateVenue = () => {
               control={control}
               name="rating"
               render={({ field }) => (
-                <Input {...field} placeholder="Rating" type="number" />
+                <Input style={{marginTop: "10px"}} {...field} placeholder="Rating" type="number" />
               )}
             />
             <span>{errors.rating?.message}</span>
@@ -161,7 +170,7 @@ const CreateVenue = () => {
               control={control}
               name="location.address"
               render={({ field }) => (
-                <Input {...field} placeholder="Address" type="text" />
+                <Input style={{marginTop: "10px"}} {...field} placeholder="Address" type="text" />
               )}
             />
             <span>{errors.location?.address?.message}</span>
@@ -170,7 +179,7 @@ const CreateVenue = () => {
               control={control}
               name="location.city"
               render={({ field }) => (
-                <Input {...field} placeholder="City" type="text" />
+                <Input style={{marginTop: "10px"}} {...field} placeholder="City" type="text" />
               )}
             />
             <span>{errors.location?.city?.message}</span>
@@ -179,7 +188,7 @@ const CreateVenue = () => {
               control={control}
               name="location.zip"
               render={({ field }) => (
-                <Input {...field} placeholder="ZIP code" type="text" />
+                <Input style={{marginTop: "10px"}} {...field} placeholder="ZIP code" type="text" />
               )}
             />
             <span>{errors.location?.zip?.message}</span>
@@ -188,16 +197,19 @@ const CreateVenue = () => {
               control={control}
               name="location.country"
               render={({ field }) => (
-                <Input {...field} placeholder="Country" type="text" />
+                <Input style={{marginTop: "10px"}} {...field} placeholder="Country" type="text" />
               )}
             />
             <span>{errors.location?.country?.message}</span>
           </Col>
         </Row>
-        <span>{errorMsg}</span>
-        <Button type="primary" htmlType="submit">
+        <div style={{display: "flex", flexDirection: "column"}}>
+        <span style={{margin: "15px 0 15px 0", fontSize: "larger", color: "green", textAlign: "center"}}>{successMsg}</span>
+        <span style={{margin: "15px 0 15px 0", fontSize: "larger", color: "red", textAlign: "center"}}>{errorMsg}</span>
+        <Button style={{marginTop: "10px", width: "10%"}} type="primary" htmlType="submit">
           Register
         </Button>
+        </div>
       </form>
     </section>
   );
