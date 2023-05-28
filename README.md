@@ -19,6 +19,7 @@ Netlify:
 https://holidaze-moami.netlify.app/
 
 Gantt:
+![header](./HeaderReadme/Screenshot 2023-04-16154153.png "Gantt" )  
 
 # Setup and testing
 
