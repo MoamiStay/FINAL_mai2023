@@ -1,6 +1,6 @@
 # FINAL_mai2023
 
-![header](./HeaderReadme/header2 "Header" )  
+![header](./HeaderReadme/header1.png "Header" )  
 
 Holidaze - accomodation booking site
 
@@ -16,6 +16,7 @@ Figma Prototype:
 https://www.figma.com/file/kr6CymBQ4jGtg5hxFaXoWT/Holidaze-Exam-Final?type=design&node-id=1%3A130&t=Y56DNKw17CXhhvmx-1
 
 Netlify:
+https://holidaze-moami.netlify.app/
 
 Gantt:
 
