@@ -13,5 +13,6 @@ export const registerSchema = yup.object().shape({
   confirmPassword: yup
     .string()
     .trim()
+    .min(8, "Password must be minimum 8 characters")
     .oneOf([yup.ref("password")], "Passwords do not match"),
 });
