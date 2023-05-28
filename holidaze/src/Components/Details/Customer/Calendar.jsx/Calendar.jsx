@@ -3,7 +3,7 @@ import moment from "moment";
 import { useParams } from "react-router-dom";
 import { URL } from "../../../../Utils/constants";
 import useApi from "../../../../Hooks/useApi";
-import "antd/dist/antd.css";
+// import "antd/dist/antd.css";
 
 const bookingsEndpoint = "/api/v1/holidaze/venues/";
 const parameters = "?_bookings=true";
