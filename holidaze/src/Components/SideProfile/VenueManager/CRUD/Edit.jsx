@@ -50,8 +50,6 @@ const Edit = () => {
       };
       const response = await fetch(URL + editEndpoint + id, postData);
       const json = await response.json();
-      console.log(json);
-      console.log(response);
 
       if (response.ok) {
         reset();
@@ -68,7 +66,6 @@ const Edit = () => {
     } catch (error) {
       setErrorMsg(error);
     } finally {
-      // console.log("Done");
     }
   };
 
@@ -258,7 +255,7 @@ const Edit = () => {
         <div style={{display: "flex", flexDirection: "column"}}>
         <span style={{margin: "15px 0 15px 0", fontSize: "larger", color: "green", textAlign: "center"}}>{successMsg}</span>
         <span style={{margin: "15px 0 15px 0", fontSize: "larger", color: "red", textAlign: "center"}}>{errorMsg}</span>
-          <Button type="primary" htmlType="submit">
+          <Button style={{backgroundColor: "#408BB6"}} type="primary" htmlType="submit">
             Save Changes
           </Button>
         </div>

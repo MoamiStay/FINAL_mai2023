@@ -8,7 +8,6 @@ import { ImgContainer, Img } from "./styles";
 
 const Listings = () => {
     const { data, isLoading, isError } = useApi(URL + venuesURL);
-    console.log(data);
         const [ state, setState ] = useState({
         query: "",
         list: data

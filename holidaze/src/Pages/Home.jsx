@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { logout } from "../Redux/LoggedSlice";
 import AllListings from "../Components/Listings/Index";
 import Customer from "../Components/SideProfile/Customer/Customer";
@@ -18,6 +18,7 @@ const Home = () => {
   } = theme.useToken();
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const [ toggleCreate, setToggleCreate ] = useState(false);
   const [ toggleVenues, setToggleVenues ] = useState(false);
@@ -30,17 +31,12 @@ const Home = () => {
       <Sider style={{ minHeight: "100vh"}}
         breakpoint="lg"
         collapsedWidth="0"
-        onBreakpoint={(broken) => {
-          console.log(broken);
-        }}
-        onCollapse={(collapsed, type) => {
-          console.log(collapsed, type);
-        }}
       >
         <div className="demo-logo-vertical" />
       <Customer />
       <div style={{display: "flex", flexDirection: "column", justifyContent: "flex-start" }}>
-      <Button type="text" className="menuText" style={{textAlign: "left"}} onClick={() => setIsToggled(!isToggled)}>My bookings</Button>
+      <Button type="text" className="menuText" style={{textAlign: "left"}} onClick={() => setIsToggled(false)}>Home</Button>
+      <Button type="text" className="menuText" style={{textAlign: "left"}} onClick={() => setIsToggled(true)}>My bookings</Button>
       <Button type="link" style={{textAlign: "left"}} onClick={() => dispatch(logout())}><Link to="/Logout">Log out</Link></Button>
       </div>
       </Sider>
@@ -91,12 +87,6 @@ const Home = () => {
       <Sider style={{ minHeight: "100vh"}}
         breakpoint="lg"
         collapsedWidth="0"
-        onBreakpoint={(broken) => {
-          console.log(broken);
-        }}
-        onCollapse={(collapsed, type) => {
-          console.log(collapsed, type);
-        }}
       >
         <div className="demo-logo-vertical" />
        <VenueManager />

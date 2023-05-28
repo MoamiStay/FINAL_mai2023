@@ -16,11 +16,6 @@ const HeaderNav = () => {
           </Link>
          </ImgContainer>
          {isHomePage && !localStorage.getItem("authenticate") ? <Link to="/Login" className="link">Login</Link> : "" }
-
-        {/* <Link to="*">404</Link> */}
-        {/* <Link to="/Register">Register</Link> */}
-        {/* <Link to="/VenueDetails">Venue</Link> */}
-        {/* <Link to="/Logout">LoggedOut</Link> */}
        </nav>
       </Header>
   );

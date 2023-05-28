@@ -37,10 +37,7 @@ const requestImg = async () => {
         };
         const response = await fetch(URL + "/api/v1/holidaze/profiles/" + username + "/media", postData)
         const json = await response.json();
-        console.log(response);
-        console.log(json);
 
-        // it accepts broken links too... cant use yup to find valid links. Broken?
     if(response.ok && state.query !== "") {
         setErrorMsg("");
         dispatch(

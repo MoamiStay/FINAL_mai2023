@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import { Button } from "antd";
 
 const NotFound = () => {
     return (

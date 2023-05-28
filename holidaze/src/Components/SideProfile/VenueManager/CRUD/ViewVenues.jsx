@@ -10,16 +10,11 @@ const username = localStorage.getItem("username");
 const nameParam = username + "/venues?_bookings=true&_owner=true";
 const { Panel } = Collapse;
 
-  const onChange = (key) => {
-    console.log(key);
-  }
-
 if  (!username) {
     return <p>Loading...</p>
 };
 
     const { data, isLoading, isError } = useApiAuth(URL + getMyVenues + nameParam);
-    console.log(data);
     localStorage.setItem("myVenues", JSON.stringify(data));
     const parsedData = JSON.parse(localStorage.getItem("myVenues")); 
 
@@ -43,7 +38,7 @@ if  (!username) {
                         <ImgCard src="/missingImg.jpg" alt={item.name} />
                         }
 
-                        <Collapse onChange={onChange}>
+                        <Collapse>
                         <Panel header={"Bookings: " + item.bookings.length} key={idx}>
                         {item.bookings.map((booking, idx) => {
                         return (

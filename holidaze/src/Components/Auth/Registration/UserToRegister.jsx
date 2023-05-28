@@ -43,8 +43,6 @@ const UserToRegister = () => {
 
         const response = await fetch(URL + registerURL, postData);
         const json = await response.json();
-        console.log(response);
-        console.log(json);
 
         if (response.ok) {
           setSuccessMsg("Registration successful, redirecting to login");
@@ -94,7 +92,6 @@ const UserToRegister = () => {
           render={({ field }) => (
             <>
               <Input {...field} placeholder="@noroff.no" />
-              {/* <span style={{ fontSize: "smaller" }}>Must be an @noroff.no/@stud.noroff.no email</span> */}
             </>
           )}
         />
@@ -117,7 +114,6 @@ const UserToRegister = () => {
           render={({ field }) => (
             <>
               <Input {...field} placeholder="Password" type="password" />
-              {/* <span style={{ fontSize: "smaller" }}>Min 8 characters</span> */}
             </>
           )}
         />
@@ -139,7 +135,7 @@ const UserToRegister = () => {
       <div style={{ display: "flex", justifyContent: "center" }}>
         <Form.Item wrapperCol={{ span: 16 }}>
 
-          <Button type="primary" htmlType="submit">
+          <Button style={{backgroundColor: "#408BB6"}} type="primary" htmlType="submit">
             Register
           </Button>
         </Form.Item>

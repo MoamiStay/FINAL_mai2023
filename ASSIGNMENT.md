@@ -18,7 +18,7 @@ Swagger: https://nf-api.onrender.com/docs/static/index.html
 
 <!-- A user may view a specific Venue page by id -->
 
-A user may view a calendar with available dates for a Venue
+<!-- A user may view a calendar with available dates for a Venue -->
 
 <!-- A user with a stud.noroff.no email may register as a customer -->
 
@@ -55,19 +55,22 @@ Must use an approved CSS Framework -->
 
 <!-- Must use an approved Planning Application -->
 
-Required Links
+<!-- Required Links -->
 
 # Must be included
 
 <!-- A Gantt chart for project timing -->
 
-A design prototype
-A style guide
+<!-- A design prototype -->
+
+<!-- A style guide -->
 
 <!-- A kanban project board -->
 
-A repository link
-A hosted application demo link
+<!-- A repository link -->
+
+<!-- A hosted application demo link -->
+
 Approved Resources; This list covers libraries and services that have been vetted by the company and approved for use.
 
 # Delivery

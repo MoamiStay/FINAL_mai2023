@@ -8,11 +8,16 @@ html {
     --color-menuText: rgb(213, 46, 46);
 };
 
-.menuText {
+.menuText, .menuText:active, .menuText:hover {
     color: #e8e8e8;
     ::placeholder {
         color: #e8e8e8;
     }
+}
+
+.ant-btn-text:not(:disabled):hover {
+    color: white;
+    font-weight: bolder;
 }
 
 .copytext, .copytext:hover {

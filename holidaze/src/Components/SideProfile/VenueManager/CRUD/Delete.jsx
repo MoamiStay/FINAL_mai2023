@@ -23,11 +23,9 @@ const Delete = () => {
           },
         };
         const response = await fetch(deleteURL, postData);
-        // console.log(response);
 
         if (response.ok) {
             setFeedbackMsg("Venue was successfully deleted");
-          console.log("it was not deleted..");
         };
         setTimeout(() => {
           navigate("/");
@@ -43,7 +41,7 @@ const Delete = () => {
 
     return (
         <>
-    <Button danger onClick={() => {deleteMe()}}>Delete</Button>
+    <Button style={{backgroundColor: "#C8283B", color: "white"}} danger onClick={() => {deleteMe()}}>Delete</Button>
     <span>{feedbackMsg}</span>
         </>
     )

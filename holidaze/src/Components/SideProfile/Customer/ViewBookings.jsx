@@ -5,7 +5,6 @@ import { Row, Col, Card, Button, Rate, Divider } from "antd";
 import { ImgCard } from "./styles";
 
 const daysTotal = (date1, date2) => {
-  console.log(date1, date2);
   const oneDay = 24 * 60 * 60 * 1000;
   const firstDate = new Date(date1);
   const secondDate = new Date(date2);
@@ -16,7 +15,6 @@ const daysTotal = (date1, date2) => {
 }
 
 const priceTotal = (date1, date2, price, guests) => {
-  console.log(date1, date2);
   const oneDay = 24 * 60 * 60 * 1000;
   const firstDate = new Date(date1);
   const secondDate = new Date(date2);
@@ -36,8 +34,6 @@ if  (!username) {
     return <p>Loading...</p>
 };
           const { data, isLoading, isError } = useApiAuth(URL + myBookingsUrl + username +  myBookingsUrlName);
-// console.log(data);
-
 
       return (
       <>
@@ -49,7 +45,6 @@ if  (!username) {
       <>
         <Row style={{justifyContent: "center"}}>
             {data.map((item, idx) => {
-              console.log(item);
                 return (
                     <Card title={item.name} bordered={false} key={idx} style={{width: "15rem", margin: "10px"}}>
                         <Col xs={24} sm={12} md={8} lg={6} key={item.id}></Col>

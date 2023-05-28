@@ -37,9 +37,7 @@ const onFormSubmit = async () => {
         email,
         password
     };
-    console.log(bodyContent);
     const isValid = await loginSchema.isValid(bodyContent);
-    console.log("Validation: " + isValid)
 
       try {
         const postData = {
@@ -50,9 +48,7 @@ const onFormSubmit = async () => {
           body: JSON.stringify(bodyContent),
         };
         const response = await fetch(URL + loginURL, postData);
-        // console.log(response);
         const json = await response.json();
-        // console.log(json);
 
         if(response.ok) {
             localStorage.setItem("authenticate", json.accessToken)
@@ -82,7 +78,6 @@ const onFormSubmit = async () => {
         console.log(error);
       } finally {
         reset();
-        // console.log("statuss: " + statuss);
       };
 }
 
@@ -124,7 +119,7 @@ return (
         span: 16,
       }}
     >
-      <Button type="primary" htmlType="submit">
+      <Button style={{backgroundColor: "#408BB6"}} type="primary" htmlType="submit">
         Login
       </Button>
     </Form.Item>

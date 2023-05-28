@@ -7,14 +7,10 @@ const VenueManagerDetails = (props) => {
     const data = props.data;
     const rating = typeof data?.rating === 'number' ? data.rating : 0;
     const media = data?.media && data.media.length > 0 ? data.media : null;
-    
-  const onChange = (currentSlide) => {
-    console.log(currentSlide);
-  };
 
     return (
       <Card bordered={false} >
-            <Carousel style={{width: "100%"}} autoplay afterChange={onChange}>
+            <Carousel style={{width: "100%"}} autoplay>
                 {media?.map((item, index) => (
                     <div key={index}>
                         <ImgContainer>

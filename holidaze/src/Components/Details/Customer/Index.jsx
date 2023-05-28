@@ -4,12 +4,10 @@ import Info from "./Info/Info";
 
 const CustomerDetails = (props) => {
     const data = props.data
-    console.log(data);
     return (
         <>
         < Info data={data} />
         < CreateBooking data={data} />
-        < Calendar data={data}/> 
         </>
     )
 };

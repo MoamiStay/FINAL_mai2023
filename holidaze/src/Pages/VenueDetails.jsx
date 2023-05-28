@@ -3,7 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { getVenuesURL } from "../Utils/constants";
 import { URL } from "../Utils/constants";
 import Details from "../Components/Details/Index";
-import { Layout, theme, Button } from 'antd';
+import { Layout, theme, Button, Spin } from 'antd';
 import React from 'react';
 import VenueManager from "../Components/SideProfile/VenueManager/VenueManager";
 import Customer from "../Components/SideProfile/Customer/Customer";
@@ -16,6 +16,16 @@ const VenueDetails = () => {
       token: { colorBgContainer },
   } = theme.useToken();
   const navigate = useNavigate();
+
+    if (isLoading) {
+    return <div>
+      <Spin />
+    </div>;
+  }
+
+  if (isError) {
+    return <div>Error occurred while fetching data.</div>;
+  }
 
     if (localStorage.getItem("authenticate") !== null && localStorage.getItem("venueManager") === "false") {
   return (

@@ -36,10 +36,7 @@ const CreateVenue = () => {
         },
         body: JSON.stringify(data)
       });
-      console.log(data);
       const json = await response.json();
-      console.log(json);
-      console.log(response);
 
       if (response.ok) {
         reset();
@@ -206,7 +203,7 @@ const CreateVenue = () => {
         <div style={{display: "flex", flexDirection: "column"}}>
         <span style={{margin: "15px 0 15px 0", fontSize: "larger", color: "green", textAlign: "center"}}>{successMsg}</span>
         <span style={{margin: "15px 0 15px 0", fontSize: "larger", color: "red", textAlign: "center"}}>{errorMsg}</span>
-        <Button style={{marginTop: "10px", width: "10%"}} type="primary" htmlType="submit">
+        <Button style={{marginTop: "10px", width: "10%", backgroundColor: "#408BB6"}} type="primary" htmlType="submit">
           Register
         </Button>
         </div>
