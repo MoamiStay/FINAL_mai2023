@@ -4,14 +4,35 @@ Holidaze - accomodation booking site
 
 # Delivery
 
+Head Img:
+
 Trello:  
 https://trello.com/invite/b/59Le7GbB/ATTI219558ad0fd21d93d64637a41cdca09eB84FA9D0/holidaze
 
 Style Guide:
+https://www.figma.com/file/kr6CymBQ4jGtg5hxFaXoWT/Holidaze-Exam-Final?type=design&node-id=101%3A276&t=Y56DNKw17CXhhvmx-1
 
 Figma Prototype:
+https://www.figma.com/file/kr6CymBQ4jGtg5hxFaXoWT/Holidaze-Exam-Final?type=design&node-id=1%3A130&t=Y56DNKw17CXhhvmx-1
 
 Netlify:
+
+Gantt:
+
+# Setup and testing
+
+npm i  
+npm run build  
+npm run dev
+
+# Tools
+
+React
+Redux
+styled-components
+react-router-dom
+react-hook-forms
+Ant.design
 
 # What I learned
 
@@ -21,11 +42,12 @@ Would rather make a separate actual page instead to make things easier. Mainly a
 
 I had a hard time figuring out how to utilize Redux, and I am still not very confident in using the tool, but I did learn a lot and feel like I got a better understanding of it now.
 
-######
+# Sources:
 
-######
+Missing img: https://depositphotos.com/vector-images/placeholder.html
+Other images taken from Unsplash.com
 
-######
+##############################################
 
 <!-- - npx create-react-app holidaze -->
 
@@ -37,9 +59,6 @@ I had a hard time figuring out how to utilize Redux, and I am still not very con
 
   <!-- - (npm i react-hook-form)
 - (npm i @hookform/resolvers yup) -->
-
-- Use framework for styling (ant.design)
-- Use framework for building (react)
 
 # Redux w/payload example:
 
@@ -57,6 +76,3 @@ from /SideProfile/Avatar/ChangeImg.jsx
 <!--
         <button onClick={() => setIsToggled(!isToggled)}>Edit profile image</button>
         {isToggled && <InputNewAvatar />} -->
-
-Resources:
-Missing img: https://depositphotos.com/vector-images/placeholder.html
