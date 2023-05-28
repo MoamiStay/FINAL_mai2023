@@ -25,17 +25,17 @@ Gantt:
 
 npm i  
 vite build  
-npm run dev
+npm run dev  
 
 # Tools
 
-React
-Vite
-React-Redux
-styled-components
-react-router-dom
-react-hook-forms
-Ant.design
+React  
+Vite  
+React-Redux  
+styled-components  
+react-router-dom  
+react-hook-forms  
+Ant.design  
 
 # What I learned
 
@@ -46,8 +46,17 @@ I would rather make a separate actual page instead to make things easier. Mainly
 
 I had a hard time figuring out how to utilize Redux, and I am still not very confident in using the tool, but I did learn a lot and feel like I got a better understanding of it now.
 
+# Process
+
+The process was quite different this time compared to previous projects. I usually spend too much time on the figma design and after finishing the design it takes a long time for me to start the implementation. It also means that while the design looks alright, it might not fit with the functionality I need to implement and therefore the workflow and motivation to work gets worse as I get more frustrated with making it all fit into the design I made.  
+
+So this time I decided to do the procress in the complete opposite order. I coded everything first in pure HTML and added all design after.  
+It was a big risk considering I've never tried this approach before and on top of that I had to use a react CSS framework I'd never used before. Needless to say, the design it not at all perfect and there are still some issue left unsolved. However all the requierd functionality is in place and works well (except menu navigation) at the cost of the design suffering a little bit.  
+
+I don't see myself using this approach again any time soon, but it was interesting to test it out.  
+
 # Sources:
 
-Missing img: https://depositphotos.com/vector-images/placeholder.html
+Missing img: https://depositphotos.com/vector-images/placeholder.html  
 Other images I used are taken from Unsplash.com
 
