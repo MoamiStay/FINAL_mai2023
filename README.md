@@ -23,6 +23,9 @@ Gantt:
 
 # Setup and testing
 
+Clone repo:  
+git clone git@github.com:MoamiStay/FINAL_mai2023.git  
+
 npm i  
 vite build  
 npm run dev  
